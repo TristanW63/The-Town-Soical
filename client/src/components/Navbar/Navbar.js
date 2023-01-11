@@ -9,6 +9,7 @@ function NavBar() {
     <NavbarBrand>
         The Townies
     </NavbarBrand>
+    
 </Navbar>
     );
 }
