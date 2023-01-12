@@ -13,6 +13,10 @@ export const Register = (props) => {
     }
 
     return (
+        <div>
+             <h1
+        className='logo'
+        >The Townie</h1>
         <div className='auth-form-container'>
             <h2>Register</h2>
         <form className='register-form' onSubmit={handleSubmit}>
@@ -22,9 +26,10 @@ export const Register = (props) => {
             <input value={email} onChange={(e) => setEmail(e.target.value)} type='email' placeholder='test123@email.com' id='email' name='email' />
             <label htmlFor='password'>Password</label>
             <input value={pass} onChange={(e) => setPass(e.target.value)} type='password' placeholder='Password' id='password' name='password' />
-            <button type='submit'>Register</button>
+            <button className='login-btn' type='submit'>Register</button>
         </form>
         <button className='link-btn' onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>
+        </div>
         </div>
     )
 }
