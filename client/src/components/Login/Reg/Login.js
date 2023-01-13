@@ -66,7 +66,7 @@ export const Login = (props) => {
             <input required value={userData.password} onChange={handleInput} type='password' placeholder='Password' id='password' name='password' />
             <button disabled={!(userData.email && userData.password)} className='login-btn' type='submit'>Log In</button>
         </form>
-        <Link to="/register" className='text'>
+        <Link to="/register" className='Logintext'>
 										{"Don't have an account? Sign Up"}
 									</Link>
         {/* <button className='link-btn'  onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button> */}

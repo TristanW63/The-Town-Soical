@@ -4,13 +4,13 @@ body {
   }
   
   .sidebar {
-    display: block;
+    display: flexbox;
     padding: 0;
     width: 18%;
     background-color: #fdfdfd9a;
     position: fixed;
     left: 0;
-    height: 100%;
+    height: 100vh;
     overflow: auto;
   }
 
@@ -19,15 +19,13 @@ body {
     src: url('https://fonts.googleapis.com/css2?family=Style+Script&display=swap');
     font-weight: 600;
     font-size: 2rem;
-    
   }
 
   .sidebar a {
     display: flex;
-    flex-direction: row;
-    position: relative;
     color: black;
     text-decoration: none;
+    font-size: 19px;
   }
    
   .sidebar a.active {
@@ -42,18 +40,38 @@ body {
   }
 
   .navbar-nav a {
-    padding: 12%;
+    padding: 10%;
     align-items: center;
   }
+  .logoIcon {
+    visibility: hidden;
+  }
+
+  .logout {
+    position: absolute;
+    bottom: 0;
+  }
   
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 1200px) {
     .sidebar {
-      width: 100%;
-      height: auto;
-      position: relative;
+      width: 10%;
     }
-    .sidebar a {float: left;}
-    div.content {margin-left: 0;}
+    .navtext {display: none;}
+    .nav-logo {display: none;}
+    .logoIcon {
+      visibility:visible!important;
+     margin: 20%;
+    }
+    .sidebar a {
+      justify-content: center;
+      margin: 20%;
+      font-size: 25px;
+    }
+    #logoutIcon {
+      position: fixed;
+      bottom: 0;
+      padding-bottom: 15px;
+    }
   }
   
   @media screen and (max-width: 400px) {
