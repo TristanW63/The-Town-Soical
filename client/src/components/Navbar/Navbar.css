@@ -4,13 +4,22 @@ body {
   }
   
   .sidebar {
-    margin: 0;
+    display: block;
     padding: 0;
-    width: 200px;
+    width: 25%;
     background-color: #fdfafa;
     position: fixed;
+    left: 0;
     height: 100%;
     overflow: auto;
+  }
+
+  .nav-logo {
+    font-family: 'Style Script';
+    src: url('https://fonts.googleapis.com/css2?family=Style+Script&display=swap');
+    font-weight: 600;
+    font-size: 2rem;
+    
   }
   
   .sidebar a {
@@ -29,14 +38,18 @@ body {
     background-color: #555;
     color: white;
   }
-  
+
+  .navbar-nav a {
+    padding: 10%
+  }
+/*   
   div.content {
     margin-left: 200px;
     padding: 1px 16px;
     height: 1000px;
-  }
+  } */
   
-  @media screen and (max-width: 700px) {
+  /* @media screen and (max-width: 700px) {
     .sidebar {
       width: 100%;
       height: auto;
@@ -51,4 +64,4 @@ body {
       text-align: center;
       float: none;
     }
-  }
+  } */

@@ -2,7 +2,6 @@
   "name": "the-town-app",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -15,6 +14,7 @@
     "react-bootstrap": "^2.2.1",
     "react-icons": "^4.3.1",
     "react-router-dom": "^6.2.2",
+    "graphql": "15.4.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
