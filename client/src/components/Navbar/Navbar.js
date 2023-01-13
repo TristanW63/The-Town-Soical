@@ -1,18 +1,26 @@
 import React from "react";
 import "./Navbar.css";
 import { Navbar, Nav, Container, Modal, Tab, NavbarBrand, NavLink } from 'react-bootstrap';
-
+import {
+    AiFillHome,
+} from "react-icons/ai";
+import {
+    BiMessageSquareAdd
+} from "react-icons/bi"
+import {
+    FcLike
+} from "react-icons/fc"
 
 function NavBar() {
     return (
 <Navbar className="sidebar">
-    <NavbarBrand>
-        The Townies
+    <NavbarBrand className="nav-logo">
+       <p>The Townies</p>
     </NavbarBrand>
     <Nav>
         <Nav.Item>
-            <NavLink>
-                Home
+            <NavLink to="/home">
+             <AiFillHome />   Home
             </NavLink>
         </Nav.Item>
         <Nav.Item>
@@ -22,22 +30,23 @@ function NavBar() {
         </Nav.Item>
         <Nav.Item>
             <NavLink>
-                Profile
+            <FcLike />  Likes
             </NavLink>
         </Nav.Item>
         <Nav.Item>
             <NavLink>
-                Create Post
+             <BiMessageSquareAdd />   Create Post
             </NavLink>
         </Nav.Item>
         <Nav.Item>
             <NavLink>
-                Likes
+              Profile
             </NavLink>
         </Nav.Item>
+
         <Nav.Item>
             <NavLink>
-                Logout
+                <p className="">Logout</p>
             </NavLink>
         </Nav.Item>
     </Nav>
