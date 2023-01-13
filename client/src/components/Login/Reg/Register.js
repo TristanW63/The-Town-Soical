@@ -74,7 +74,7 @@ export const Register = (props) => {
             userData.password
             )} className='login-btn' type='submit'>Register</button>
         </form>
-        <Link to="/login" className='text'>
+        <Link to="/" className='text'>
 										{"Don't have an account? Sign Up"}
 									</Link>
         {/* <button className='link-btn' onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button> */}

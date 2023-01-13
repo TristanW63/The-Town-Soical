@@ -1,15 +1,19 @@
 import React from "react";
 import "./Navbar.css";
-import { Navbar, Nav, Container, Modal, Tab, NavbarBrand, NavLink } from 'react-bootstrap';
+import { Navbar, Nav, NavbarBrand, NavLink } from 'react-bootstrap';
 import {
     AiFillHome,
+    AiOutlineSearch,
 } from "react-icons/ai";
 import {
-    BiMessageSquareAdd
-} from "react-icons/bi"
-import {
-    FcLike
-} from "react-icons/fc"
+    BiMessageSquareAdd,
+    BiLogOut
+} from "react-icons/bi";
+import { CgProfile} from "react-icons/cg";
+import {FcLike} from "react-icons/fc";
+import Login from "../Login/Reg/Login";
+import { Link } from "react-router-dom";
+import Auth from "../../utils/auth";
 
 function NavBar() {
     return (
@@ -20,33 +24,32 @@ function NavBar() {
     <Nav>
         <Nav.Item>
             <NavLink to="/home">
-             <AiFillHome />   Home
+             <AiFillHome style={{ marginBottom: '3px', marginRight: '3px'}}/>   Home
             </NavLink>
         </Nav.Item>
         <Nav.Item>
             <NavLink>
-                Search
+             <AiOutlineSearch style={{ marginBottom: '3px', marginRight: '3px'}}/>   Search
             </NavLink>
         </Nav.Item>
         <Nav.Item>
             <NavLink>
-            <FcLike />  Likes
+            <FcLike style={{ marginBottom: '2px', marginRight: '3px'}}/>  Likes
             </NavLink>
         </Nav.Item>
         <Nav.Item>
             <NavLink>
-             <BiMessageSquareAdd />   Create Post
+             <BiMessageSquareAdd style={{ marginBottom: '2px', marginRight: '3px'}}/>   Create Post
             </NavLink>
         </Nav.Item>
         <Nav.Item>
             <NavLink>
-              Profile
+            <CgProfile style={{ marginBottom: '2px', marginRight: '3px'}}/>  Profile
             </NavLink>
         </Nav.Item>
-
         <Nav.Item>
-            <NavLink>
-                <p className="">Logout</p>
+            <NavLink as={Link} to='/' onClick={Auth.logout} style={{marginTop: '65%'}}>
+             <BiLogOut style={{ marginBottom: '2px', marginRight: '3px'}}/>  Logout
             </NavLink>
         </Nav.Item>
     </Nav>
