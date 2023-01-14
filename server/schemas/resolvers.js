@@ -14,6 +14,16 @@ const resolvers = {
       }
       throw new AuthenticationError("You must be logged in!");
     },
+    users: async () => {
+      return User.find().populate('post');
+    },
+    posts: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Post.find(params);
+    },
+    post: async (parent, { postId }) => {
+      return Post.findOne({ _id: postId });
+    },
   },
 
   Mutation: {
@@ -51,7 +61,7 @@ const resolvers = {
 
         return post;
       }
-      throw new AuthenticationError('You need to be logged in!');
+      // throw new AuthenticationError('You need to be logged in!');
     },
   },
 };
