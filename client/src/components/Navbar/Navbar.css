@@ -4,9 +4,9 @@ body {
   }
   
   .sidebar {
-    display: flexbox;
+    display:table;
     padding: 0;
-    width: 18%;
+    width: 16%;
     background-color: #fdfdfd9a;
     position: fixed;
     left: 0;
@@ -40,7 +40,7 @@ body {
   }
 
   .navbar-nav a {
-    padding: 10%;
+    padding: 12%;
     align-items: center;
   }
   .logoIcon {
@@ -50,6 +50,7 @@ body {
   .logout {
     position: absolute;
     bottom: 0;
+    left: 0;
   }
   
   @media screen and (max-width: 1200px) {
@@ -58,25 +59,39 @@ body {
     }
     .navtext {display: none;}
     .nav-logo {display: none;}
+    .navbar-nav a {
+      padding: 18%;
+    }
     .logoIcon {
       visibility:visible!important;
-     margin: 20%;
+     margin-top: 35%;
+     justify-content: center;
+     position: relative;
     }
     .sidebar a {
       justify-content: center;
-      margin: 20%;
+      margin-top:25% ;
       font-size: 25px;
     }
-    #logoutIcon {
-      position: fixed;
-      bottom: 0;
-      padding-bottom: 15px;
+    .navIconsL {
+      padding-left: 20px;
     }
   }
   
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 982px) {
     .sidebar a {
-      text-align: center;
-      float: none;
+      justify-content: center;
+     margin-top: 30%;
+      font-size: 30px;
+    }
+    .navIconsL {
+      padding-left: 13px;
+    }
+
+  }
+
+  @media screen and (max-width: 800px) {
+    .navIconsL {
+      padding-left: 8px;
     }
   }
