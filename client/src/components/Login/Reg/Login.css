@@ -9,6 +9,7 @@
 
   .Logintext {
     color: white;
+    padding-top: 10px;
   }
 
 .logo {
@@ -16,6 +17,7 @@
     src: url('https://fonts.googleapis.com/css2?family=Style+Script&display=swap');
     font-size: 4rem;
     font-weight: 600;
+    margin-bottom: 0rem;
   }
   
   .auth-form-container, .login-form, .register-form {
@@ -24,12 +26,11 @@
   }
   
   .auth-form-container {
-    padding: 4rem;
+    padding: 0rem 3rem 3rem 3rem;
     border: 1px solid #4CC9F0;
     border-radius: 10px;
     box-shadow: 0 3px 3px 3px #4CC9F0;
     opacity: 0.8;
-    margin: 0.5rem;
   }
   
   label {
@@ -46,23 +47,19 @@
     border-radius: 10px;
   }
   
-  button {
+  .login-btn {
     border: none;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     cursor: pointer;
     color: #7209B7;
-  }
-  
-  .link-btn {
-    background: none;
-    color: white;
-    text-decoration: underline;
-  }
-  
-  .login-btn {
     font-size: 1rem;
     font-weight: 500;
-    padding: 1rem;
+    padding: .70rem;
+  }
+
+  .login-btn:hover {
+    transform: scale(1.075);
+    transition: all 0.5s;
   }

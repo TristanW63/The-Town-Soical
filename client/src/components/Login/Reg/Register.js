@@ -53,10 +53,10 @@ export const Register = (props) => {
 
     return (
         <div className='App'>
-             <h1
+        <div className='auth-form-container'>
+        <h1
         className='logo'
         >The Townie</h1>
-        <div className='auth-form-container'>
             <h2>Register</h2>
         <form noValidate validated={validated} className='register-form' onSubmit={handleSubmit}>
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant="danger">
@@ -77,7 +77,6 @@ export const Register = (props) => {
         <Link to="/" className='Logintext'>
 										{"Don't have an account? Sign Up"}
 									</Link>
-        {/* <button className='link-btn' onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button> */}
         </div>
         </div>
     );
