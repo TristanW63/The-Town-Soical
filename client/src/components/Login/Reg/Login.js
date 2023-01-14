@@ -14,6 +14,7 @@ export const Login = (props) => {
 
     const [login, {error}] = useMutation(LOGIN_USER);
 
+
     const handleInput = (event) => {
         const { name, value } = event.target;
         setUserData({ ...userData, [name]: value });
@@ -44,21 +45,16 @@ export const Login = (props) => {
             password: "",
         });
     };
-//       const [currentForm, setCurrentForm] = useState( 'login');
-
-//   const toggleForm = (formName) => {
-//     setCurrentForm(formName)
-//   }
     return (
         <div className='App'>
-        <h1
+        <div className='auth-form-container'>
+            <h1
         className='logo'
         >The Townie</h1>
-        <div className='auth-form-container'>
             <h2>Login</h2>
         <form noValidate validated={validated} className='login-form' onSubmit={handleSubmit}>
             <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant="danger">
-                Something went wrong with your login credentials!
+              <Alert.Heading>Something went wrong with your login!</Alert.Heading>
             </Alert>
             <label htmlFor='email'>Email</label>
             <input required value={userData.email} onChange={handleInput} type='email' placeholder='test123@email.com' id='email' name='email' />
@@ -69,7 +65,6 @@ export const Login = (props) => {
         <Link to="/register" className='Logintext'>
 										{"Don't have an account? Sign Up"}
 									</Link>
-        {/* <button className='link-btn'  onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button> */}
         </div>
         </div>
     );
