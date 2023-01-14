@@ -13,7 +13,20 @@ user: {
 likeCount: {
     type: Number,
     default: 0
-}
+},
+Comments: [
+    {
+        commentText: {
+            type: String,
+            minlength: 1,
+            maxlength: 280
+        },
+        commentAuther: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    }
+]
 });
 
 const Post = model('Post', PostSchema);
