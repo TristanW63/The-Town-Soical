@@ -51,7 +51,7 @@ function NavBar() {
         </Nav.Item>
         <Nav.Item>
             <NavLink as={Link} to='/' onClick={Auth.logout} className="logout">
-             <BiLogOut style={{ marginBottom: '2px', marginRight: '3px'}} className="navIcons"/>  <span className="navtext">Logout</span>
+             <BiLogOut style={{ marginBottom: '2px', marginRight: '3px'}} className="navIconsL"/>  <span className="navtext">Logout</span>
             </NavLink>
         </Nav.Item>
     </Nav>
