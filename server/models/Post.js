@@ -1,18 +1,24 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 const PostSchema = new Schema({ 
-Post: {
+PostText: {
     type: String,
     minlength: [1, "need a better post"],
     maxlength: [200, "chill out man"]
 },
-user: {
-    type: Schema.Types.ObjectId,
-    ref: 'User'
+postAuthor: {
+    type: String,
+    trim: true,
 },
 likeCount: {
     type: Number,
     default: 0
+},
+createdAt: {
+    type: Date,
+    default: Date.now,
+    get: (timestamp) => dateFormat(timestamp),
 },
 Comments: [
     {
@@ -22,8 +28,12 @@ Comments: [
             maxlength: 280
         },
         commentAuther: {
-            type: Schema.Types.ObjectId,
-            ref: 'User'
+            type: String
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            get: (timestamp) => dateFormat(timestamp),
         }
     }
 ]
