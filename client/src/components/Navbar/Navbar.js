@@ -14,7 +14,7 @@ import {FcLike} from "react-icons/fc";
 import Login from "../Login/Reg/Login";
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
-import Logo from "../../img/townhouse32.png";
+import Logo from "../../img/townhouse64.png";
 
 function NavBar() {
     return (
@@ -23,7 +23,7 @@ function NavBar() {
        <p className="nav-logo">The Townies</p>
        <img className="logoIcon" src={Logo}/>
     </NavbarBrand>
-    <Nav>
+    <Nav className="smallScreen">
         <Nav.Item>
             <NavLink to="/home">
              <AiFillHome style={{ marginBottom: '3px', marginRight: '3px'}} className="navIcons"/>   <span className="navtext">Home</span>
