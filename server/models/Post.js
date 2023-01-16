@@ -14,10 +14,10 @@ postAuthor: {
     required: true,
     trim: true,
 },
-// likeCount: {
-//     type: Number,
-//     default: 0
-// },
+likeCount: {
+    type: Number,
+    default: 0
+},
 createdAt: {
     type: Date,
     default: Date.now,

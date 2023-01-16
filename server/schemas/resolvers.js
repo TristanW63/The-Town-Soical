@@ -17,14 +17,9 @@ const resolvers = {
     post: async (parent, { postId }) => {
       return Post.findOne({ _id: postId });
     },
-    // me: async (parent, args, context) => {
-    //   if (context.user) {
-    //     return User.findOne({ _id: context.user._id }).populate('posts');
-    //       // .select("-__v -password")
-
-    //     // return userData;
-    //   }
-    //   throw new AuthenticationError("You must be logged in!");
+    comments: async () => {
+  return Post.find().populate('comments');
+    },
     },
   
 
@@ -65,12 +60,12 @@ const resolvers = {
       
       // throw new AuthenticationError('You need to be logged in!');
     },
-    addComment: async (parent, { postId, commentText, commentAuthor }) => {
+    addComment: async (parent, { postId, commentId, commentText, commentAuthor }) => {
         return Post.findOneAndUpdate(
           { _id: postId },
           {
             $addToSet: {
-              comments: { commentText, commentAuthor },
+              comments: { commentId, commentText, commentAuthor },
             },
           },
           {
@@ -79,6 +74,14 @@ const resolvers = {
           }
         );
     },
+    addLike: async (parent, { postId }) => {
+      return Post.findOneAndUpdate(
+        { _id: postId },
+        {
+          $inc: { likeCount: 1 }
+        }
+      )
+    }
   },
 };
 
