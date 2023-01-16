@@ -51,10 +51,10 @@ const resolvers = {
           postAuthor
         });
 
-        await User.findOneAndUpdate(
-          { username: postAuthor },
-          { $addToSet: { posts: post._id } }
-        );
+        // await User.findOneAndUpdate(
+        //   { username: postAuthor },
+        //   { $addToSet: { post: post._id } }
+        // );
 
         return post;
       
