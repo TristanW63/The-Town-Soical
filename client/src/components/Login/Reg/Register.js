@@ -57,7 +57,7 @@ export const Register = (props) => {
         <h1
         className='logo'
         >The Townie</h1>
-            <h2>Register</h2>
+            <h2 className='logintext'>Register</h2>
         <form noValidate validated={validated} className='register-form' onSubmit={handleSubmit}>
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant="danger">
           Something went wrong with your signup!
