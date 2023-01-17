@@ -1,1 +1,5 @@
-hey yall man dudes
+update QUERY_USER
+look into adding photos
+like limiter
+page styles
+

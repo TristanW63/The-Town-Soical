@@ -50,11 +50,6 @@ const resolvers = {
           postAuthor
         });
 
-        // await User.findOneAndUpdate(
-        //   { username: postAuthor },
-        //   { $addToSet: { post: post._id } }
-        // );
-
         return post;
       
       // throw new AuthenticationError('You need to be logged in!');
