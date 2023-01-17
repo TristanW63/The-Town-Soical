@@ -17,12 +17,15 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_POSTS = gql`
-  query {
-    posts {
-      _id
-      postText
-    }
+ query getPosts {
+  posts {
+    _id
+    postText
+    postAuthor
+    createdAt
+    likeCount
   }
+}
 `;
 
 export const QUERY_USERS = gql`
