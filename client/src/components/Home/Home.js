@@ -12,9 +12,9 @@ const Home = () => {
   const posts = data?.posts || {};
 
   return (
-    <div className="App">
+    <div className="Home">
       <NavBar />
-      <div className="my-3">
+      <div style={{ marginLeft: "25%"}} className="flex-row justify-center col-md-6">
         <PostsList posts={posts} title="some feed for posts" />
       </div>
     </div>
