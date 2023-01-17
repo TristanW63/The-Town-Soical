@@ -12,12 +12,18 @@
     padding-top: 10px;
   }
 
+ .logintext {
+color: black;
+ }
+
 .logo {
     font-family: 'Style Script';
     src: url('https://fonts.googleapis.com/css2?family=Style+Script&display=swap');
     font-size: 4rem;
     font-weight: 600;
     margin-bottom: 0rem;
+    color: black;
+    margin-top: 9px;
   }
   
   .auth-form-container, .login-form, .register-form {
@@ -38,6 +44,7 @@
     padding: .25rem 0;
     font-weight: bold;
     font-size: 1.25rem;
+    color: black;
   }
   
   input {

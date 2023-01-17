@@ -51,7 +51,7 @@ export const Login = (props) => {
             <h1
         className='logo'
         >The Townie</h1>
-            <h2>Login</h2>
+            <h2 className='logintext'>Login</h2>
         <form noValidate validated={validated} className='login-form' onSubmit={handleSubmit}>
             <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant="danger">
               <Alert.Heading>Something went wrong with your login!</Alert.Heading>
