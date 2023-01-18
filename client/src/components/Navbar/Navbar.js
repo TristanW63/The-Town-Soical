@@ -28,6 +28,7 @@ function NavBar() {
           query: QUERY_POSTS,
           data: { posts: posts ? [addPost, ...posts] : [addPost] },
         });
+        window.location.reload();
       } catch (e) {
         console.error(e);
       }

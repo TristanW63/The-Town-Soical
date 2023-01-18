@@ -16,6 +16,9 @@ const resolvers = {
     post: async (parent, { postId }) => {
       return Post.findOne({ _id: postId });
     },
+    likes: async () => {
+return Post.find().populate('likes');
+    },
     comments: async () => {
   return Post.find().populate('comments');
     },
@@ -68,11 +71,18 @@ const resolvers = {
           }
         );
     },
-    addLike: async (parent, { postId }) => {
+    addLike: async (parent, { postId, liker, likeId }) => {
       return Post.findOneAndUpdate(
         { _id: postId },
         {
+          $addToSet: {
+            likes: { liker, likeId }
+          },
           $inc: { likeCount: 1 }
+        },
+        {
+          new: true,
+          runValidators: true,
         }
       )
     }
