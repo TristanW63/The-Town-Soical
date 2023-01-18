@@ -23,9 +23,10 @@ query getPosts {
     postText
     postAuthor
     createdAt
+    likeCount
     likes {
-      likeCount
       liker
+      createdAt
     }
     comments {
       _id
@@ -37,17 +38,17 @@ query getPosts {
 }
 `;
 
-export const QUERY_LIKES = gql`
-query getLikes($postId: ID!) {
-  likes(postId: $postId) {
-    likes {
-      _id
-      liker
-      likeCount
-      createdAt
-    }
-  }
-}`
+// export const QUERY_LIKES = gql`
+// query getLikes($postId: ID!) {
+//   likes(postId: $postId) {
+//     likes {
+//       _id
+//       liker
+//       likeCount
+//       createdAt
+//     }
+//   }
+// }`
 
 export const QUERY_USERS = gql`
   query {

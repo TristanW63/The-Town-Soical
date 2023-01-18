@@ -14,15 +14,15 @@ postAuthor: {
     required: true,
     trim: true,
 },
+likeCount: {
+    type: Number,
+    required: true
+},
 likes: [
     {
         liker: {
             type: String,
             required: true,
-        },
-        likeCount: {
-            type: Number,
-            default: 0,
         },
         createdAt: {
             type: Date,

@@ -7,8 +7,8 @@ const PostsList = ({ posts }) => {
     return <div className="Home">No Posts Yet</div>;
   }
 
+console.log(posts);
 
-  
   return (
     <div  className="postCard">
       {posts &&
@@ -16,7 +16,6 @@ const PostsList = ({ posts }) => {
           <div key={post._id} className="card mb-4">
             {post.postAuthor} <br />
             <div className="card-body bg-light p-2">
-
             </div>
             <FcLike />
             <p> Liked by {post.likeCount}</p>
@@ -27,5 +26,4 @@ const PostsList = ({ posts }) => {
     </div>
   );
 };
-
 export default PostsList;
