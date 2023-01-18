@@ -71,19 +71,12 @@ return Post.find().populate('likes');
           }
         );
     },
-    addLike: async (parent, { postId, liker, likeId }) => {
+    addLike: async (parent, { postId }) => {
       return Post.findOneAndUpdate(
         { _id: postId },
         {
-          $addToSet: {
-            likes: { liker, likeId }
-          },
           $inc: { likeCount: 1 }
         },
-        {
-          new: true,
-          runValidators: true,
-        }
       )
     }
   },
