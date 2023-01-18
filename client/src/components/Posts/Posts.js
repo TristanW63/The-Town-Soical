@@ -1,21 +1,27 @@
 import React from "react";
+import "./Post.css";
+import { FcLike } from "react-icons/fc";
 
 const PostsList = ({ posts }) => {
   if (!posts.length) {
-    return <h3>No Posts Yet</h3>;
+    return <div className="Home">No Posts Yet</div>;
   }
 
+
+  
   return (
-    <div>
+    <div  className="postCard">
       {posts &&
         posts.map((post) => (
-          <div key={post._id} className="card mb-3">
+          <div key={post._id} className="card mb-4">
             {post.postAuthor} <br />
-            <span> posted on {post.createdAt}</span>
             <div className="card-body bg-light p-2">
-              <p>{post.postText}</p>
+
             </div>
-            <p>{post.likeCount}</p>
+            <FcLike />
+            <p> Liked by {post.likeCount}</p>
+            <p className="postText">{post.postText}</p>
+            <span> posted on {post.createdAt}</span>
           </div>
         ))}
     </div>

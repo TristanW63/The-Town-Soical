@@ -14,8 +14,14 @@ const typeDefs = gql`
     postText: String
     postAuthor: String
     createdAt: String
-    likeCount: Int
+    likes: [Like]!
     comments: [Comment]!
+  }
+  type Like {
+    _id: ID
+    liker: String
+    likeCount: Int
+    createdAt: String
   }
   type Comment {
     _id: ID
@@ -32,6 +38,7 @@ const typeDefs = gql`
     user(username: String!): User
     posts: [Post]
     post(postId: ID!): Post
+    likes(postId: ID!) : [Post]
     comments: [Post]
     me: User
   }
@@ -40,7 +47,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     addPost(postText: String!, postAuthor: String!): Post
     addComment(postId: ID!, commentText: String!, commentAuthor: String!): Post
-    addLike(postId: ID!, likeCount: Int!, username: String!): Post
+    addLike(postId: ID!, likeCount: Int!, liker: String!): Post
   }
 `;
 

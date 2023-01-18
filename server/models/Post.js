@@ -14,10 +14,24 @@ postAuthor: {
     required: true,
     trim: true,
 },
-likeCount: {
-    type: Number,
-    default: 0
-},
+likes: [
+    {
+        liker: {
+            type: String,
+            required: true,
+        },
+        likeCount: {
+            type: Number,
+            default: 0,
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            get: (timestamp) => dateFormat(timestamp),
+        },
+    },
+],
+
 createdAt: {
     type: Date,
     default: Date.now,
