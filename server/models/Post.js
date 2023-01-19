@@ -1,62 +1,65 @@
-const { Schema, model } = require('mongoose');
-const dateFormat = require('../utils/dateFormat');
+const { Schema, model } = require("mongoose");
+const dateFormat = require("../utils/dateFormat");
 
-const postSchema = new Schema({ 
-postText: {
+const postSchema = new Schema({
+  postText: {
     type: String,
-    required: 'You need to leave a thought!',
+    required: "You need to leave a thought!",
     minlength: 1,
     maxlength: 280,
     trim: true,
-},
-postAuthor: {
+  },
+  postAuthor: {
     type: String,
     required: true,
     trim: true,
-},
-likeCount: {
+  },
+  likeCount: {
     type: Number,
     default: 0
 },
-likes: [
+  likes: [
     {
-        liker: {
-            type: String,
-            required: true,
-        },
-        createdAt: {
-            type: Date,
-            default: Date.now,
-            get: (timestamp) => dateFormat(timestamp),
-        },
-    },
-],
+      liker: {
+        type: String,
 
-createdAt: {
+      },
+      createdAt: {
+        type: Date,
+        default: Date.now,
+        get: (timestamp) => dateFormat(timestamp),
+      },
+    },
+  ],
+
+  createdAt: {
     type: Date,
     default: Date.now,
     get: (timestamp) => dateFormat(timestamp),
-},
-comments: [
+  },
+  comments: [
     {
-        commentText: {
-            type: String,
-            required: true,
-            minlength: 1,
-            maxlength: 280
-        },
-        commentAuthor: {
-            type: String,
-            required: true,
-          },
-        createdAt: {
-            type: Date,
-            default: Date.now,
-            get: (timestamp) => dateFormat(timestamp),
-        },
+      commentText: {
+        type: String,
+        required: true,
+        minlength: 1,
+        maxlength: 280,
+      },
+      commentAuthor: {
+        type: String,
+        required: true,
+      },
+      createdAt: {
+        type: Date,
+        default: Date.now,
+        get: (timestamp) => dateFormat(timestamp),
+      },
     },
-],
+  ],
 });
 
-const Post = model('Post', postSchema);
+const Post = model("Post", postSchema);
 module.exports = Post;
+
+
+ // required: true,

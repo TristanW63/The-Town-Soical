@@ -5,10 +5,12 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     users: async () => {
+
       return User.find().populate('posts');
+
     },
-    user: async (parent, {username}) => {
-      return User.findOne({ username }).populate('posts')
+    user: async (parent, { username }) => {
+      return User.findOne({ username }).populate("posts");
     },
     posts: async (parents, { username }) => {
       const params = username ? { username } : {};
@@ -17,6 +19,7 @@ const resolvers = {
     post: async (parent, { postId }) => {
       return Post.findOne({ _id: postId });
     },
+
     likes: async () => {
 return Post.find().populate('likes');
     },
@@ -53,38 +56,48 @@ return Post.find().populate('likes');
       const token = signToken(user);
       return { token, user };
     },
-    addPost: async (parent, { postText, postAuthor }) => {   
-        const post = await Post.create({
-          postText,
-          postAuthor
-        });
+    addPost: async (parent, { postText, postAuthor }) => {
+      const post = await Post.create({
+        postText,
+        postAuthor,
+      });
 
-        return post;
-      
+      return post;
+
       // throw new AuthenticationError('You need to be logged in!');
     },
-    addComment: async (parent, { postId, commentId, commentText, commentAuthor }) => {
-        return Post.findOneAndUpdate(
-          { _id: postId },
-          {
-            $addToSet: {
-              comments: { commentId, commentText, commentAuthor },
-            },
+    addComment: async (
+      parent,
+      { postId, commentId, commentText, commentAuthor }
+    ) => {
+      return Post.findOneAndUpdate(
+        { _id: postId },
+        {
+          $addToSet: {
+            comments: { commentId, commentText, commentAuthor },
           },
-          {
-            new: true,
-            runValidators: true,
-          }
-        );
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
     },
     addLike: async (parent, { postId }) => {
       return Post.findOneAndUpdate(
         { _id: postId },
         {
-          $inc: { likeCount: 1 }
+          $inc: { likeCount: 1 },
+          $addToSet: {
+            likes: {  }
+          }
         },
-      )
-    }
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    },
   },
 };
 
