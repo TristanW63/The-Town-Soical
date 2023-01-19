@@ -38,17 +38,17 @@ query getPosts {
 }
 `;
 
-// export const QUERY_LIKES = gql`
-// query getLikes($postId: ID!) {
-//   likes(postId: $postId) {
-//     likes {
-//       _id
-//       liker
-//       likeCount
-//       createdAt
-//     }
-//   }
-// }`
+export const QUERY_LIKES = gql`
+query getLikes($postId: ID!) {
+  likes(postId: $postId) {
+    likes {
+      _id
+      liker
+      likeCount
+      createdAt
+    }
+  }
+}`
 
 export const QUERY_USERS = gql`
   query {
@@ -69,3 +69,4 @@ query($username: String!){
   }
 }
 `;
+
