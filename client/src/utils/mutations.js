@@ -45,13 +45,13 @@ mutation addLike($postId: ID!) {
 }`
 export const ADD_COMMENT = gql`
 mutation addcomment($postId: ID!, $commentText: String!, $commentAuthor: String!){
-    addComment(postId: $postId, commentText: $commentText, commentAuthor: $commentAuthor) {
-      comments {
-        commentText
-        commentAuthor
-        createdAt
-        _id
-      }
+  addComment(postId: $postId, commentText: $commentText, commentAuthor: $commentAuthor) {
+    comments {
+      commentText
+      commentAuthor
+      createdAt
+      _id
     }
   }
+}
 `;

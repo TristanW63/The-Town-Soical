@@ -21,8 +21,7 @@ const postSchema = new Schema({
   likes: [
     {
       liker: {
-        type: String,
-
+        type: String
       },
       createdAt: {
         type: Date,

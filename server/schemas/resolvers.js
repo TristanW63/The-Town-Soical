@@ -12,7 +12,7 @@ const resolvers = {
     },
     posts: async (parents, { username }) => {
       const params = username ? { username } : {};
-      return Post.find(params).sort({ createdAt: -1 });
+      return Post.find(params).populate("").sort({ createdAt: -1 });
     },
     post: async (parent, { postId }) => {
       return Post.findOne({ _id: postId });
@@ -90,14 +90,15 @@ const resolvers = {
         }
       );
     },
-    addLike: async (parent, { postId }) => {
+    addLike: async (parent, { postId }, context) => {
       return Post.findOneAndUpdate(
         { _id: postId },
         {
           $inc: { likeCount: 1 },
           $addToSet: {
-            likes: {},
-          },
+
+            likes: { liker: context.user.username }
+          }
         },
         {
           new: true,
