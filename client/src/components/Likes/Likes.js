@@ -1,6 +1,7 @@
 import React from 'react';
 
 const LikeList = ({ likes = [] }) => {
+  console.log(likes)
   return (
     <>
     <p>Likes</p>
@@ -8,7 +9,7 @@ const LikeList = ({ likes = [] }) => {
         {likes &&
           likes.map((like) => (
             <div key={like._id} className="col-12 mb-3 pb-3">
-              <p>like</p>
+              <p>{like.liker}</p>
             </div>
           ))}
       </div>
