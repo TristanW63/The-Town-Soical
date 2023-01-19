@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 const CommentList = ({ comments = [] }) => {
   return (
     <>
-    <p>comments</p>
+      <p>comments</p>
       <div className="flex-row my-4">
         {comments &&
           comments.map((comment) => (

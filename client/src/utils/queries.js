@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const QUERY_ME = gql`
- query me {
+  query me {
     me {
       _id
       username
@@ -12,55 +12,66 @@ export const QUERY_ME = gql`
         postAuthor
         likeCount
         createdAt
+        likes {
+          _id
+          liker
+          createdAt
+        }
+        comments {
+          commentAuthor
+          commentText
+          createdAt
+          _id
+        }
       }
     }
   }
 `;
 
 export const QUERY_POSTS = gql`
-query posts{
-  posts {
-    postText
-    postAuthor
-    _id
-    createdAt
-    likes {
+  query posts {
+    posts {
+      postText
+      postAuthor
       _id
-      liker
       createdAt
-    }
-    comments {
-      commentAuthor
-      commentText
-      createdAt
-      _id
+      likes {
+        _id
+        liker
+        createdAt
+      }
+      comments {
+        commentAuthor
+        commentText
+        createdAt
+        _id
+      }
     }
   }
-}
 `;
 
-
 export const USER_POSTS = gql`
-query UserPosts($postAuthor: String!) {
-  userPosts(postAuthor: $postAuthor) {
-    postText
-    postAuthor
-    createdAt
-  }
-}`
-
-export const QUERY_LIKES = gql`
-query getLikes($postId: ID!) {
-  likes(postId: $postId) {
-    likes {
-      _id
-      liker
-      likeCount
+  query UserPosts($postAuthor: String!) {
+    userPosts(postAuthor: $postAuthor) {
+      postText
+      postAuthor
       createdAt
     }
   }
-}`
+`;
 
+export const QUERY_LIKES = gql`
+  query getLikes($postId: ID!) {
+    likes(postId: $postId) {
+      likes {
+        _id
+        liker
+        likeCount
+        createdAt
+      }
+    }
+  }
+`;
 
 export const QUERY_USERS = gql`
   query {
@@ -72,19 +83,29 @@ export const QUERY_USERS = gql`
 `;
 
 export const QUERY_USER = gql`
-query user($username: String!){
-  user(username: $username) {
-    _id
-    username
-    email
-    posts {
+  query user($username: String!) {
+    user(username: $username) {
       _id
-      postText
-      postAuthor
-      likeCount
-      createdAt
+      username
+      email
+      posts {
+        _id
+        postText
+        postAuthor
+        likeCount
+        createdAt
+        likes {
+          _id
+          liker
+          createdAt
+        }
+        comments {
+          commentAuthor
+          commentText
+          createdAt
+          _id
+        }
+      }
     }
   }
-}
 `;
-
