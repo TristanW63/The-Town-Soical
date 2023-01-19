@@ -5,9 +5,7 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     users: async () => {
-
-      return User.find().populate('posts');
-
+      return User.find().populate("posts");
     },
     user: async (parent, { username }) => {
       return User.findOne({ username }).populate("posts");
@@ -20,20 +18,19 @@ const resolvers = {
       return Post.findOne({ _id: postId });
     },
 
-//     likes: async () => {
-// return Post.find().populate('likes');
-//     },
-  //   comments: async () => {
-  // return Post.find().populate('comments');
-  //   },
+    //     likes: async () => {
+    // return Post.find().populate('likes');
+    //     },
+    //   comments: async () => {
+    // return Post.find().populate('comments');
+    //   },
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate("posts");
       }
       throw new AuthenticationError("You must be logged in!");
     },
-    },
-  
+  },
 
   Mutation: {
     addUser: async (parent, args) => {
@@ -56,14 +53,24 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addPost: async (parent, { postText, postAuthor }) => {
-      const post = await Post.create({
+    addPost: async (parent, { postText, postAuthor }, context) => {
+      console.log(context.user._id);
+      Post.create({
         postText,
         postAuthor,
-      });
-
-      return post;
-
+      })
+        .then((post) => {
+          console.log(post)
+          return User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $addToSet: { posts: post._id } },
+            { new: true }
+          );
+        })
+        .then((userPost) => {
+          console.log(userPost);
+          return userPost;
+        });
       // throw new AuthenticationError('You need to be logged in!');
     },
     addComment: async (
@@ -89,6 +96,7 @@ const resolvers = {
         {
           $inc: { likeCount: 1 },
           $addToSet: {
+
             likes: { liker: context.user.username }
           }
         },

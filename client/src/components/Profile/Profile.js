@@ -20,6 +20,8 @@ const Profile = () => {
     //     return <Navigate to="/profile" />;
     //   }
 
+    console.log(user);
+
 if (loading) {
     return <h2>LOADING...</h2>;
   }

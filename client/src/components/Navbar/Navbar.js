@@ -72,6 +72,7 @@ function NavBar() {
   return (
     <>
       <Navbar className="sidebar">
+        <div className="bottombar">
         <Nav className="smallScreen">
           <p className="nav-logo">The Townies</p>
           <img className="logoIcon" src={Logo} alt="logoIcon"/>
@@ -136,6 +137,7 @@ function NavBar() {
             </NavLink>
           </Nav.Item>
         </Nav>
+        </div>
       </Navbar>
       <Modal
         show={showModal}

@@ -21,6 +21,9 @@ console.log(posts);
 
   return (
     <div  className="postCard">
+
+      {showTitle && <h3>{title}</h3>}
+
       {posts &&
         posts.map((post) => (
           <div key={post._id} className="card mb-4">
