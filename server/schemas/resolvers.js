@@ -96,6 +96,7 @@ const resolvers = {
         {
           $inc: { likeCount: 1 },
           $addToSet: {
+
             likes: { liker: context.user.username }
           }
         },
