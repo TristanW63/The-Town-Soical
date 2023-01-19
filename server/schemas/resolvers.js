@@ -20,12 +20,12 @@ const resolvers = {
       return Post.findOne({ _id: postId });
     },
 
-    likes: async () => {
-return Post.find().populate('likes');
-    },
-    comments: async () => {
-  return Post.find().populate('comments');
-    },
+//     likes: async () => {
+// return Post.find().populate('likes');
+//     },
+  //   comments: async () => {
+  // return Post.find().populate('comments');
+  //   },
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate("posts");
