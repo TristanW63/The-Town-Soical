@@ -53,7 +53,7 @@ function NavBar() {
         },
       });
 
-      console.log(data)
+      console.log(data);
 
       setPostText("");
     } catch (err) {
@@ -73,70 +73,75 @@ function NavBar() {
     <>
       <Navbar className="sidebar">
         <div className="bottombar">
-        <Nav className="smallScreen">
-          <p className="nav-logo">The Townies</p>
-          <img className="logoIcon" src={Logo} alt="logoIcon"/>
-          <Nav.Item>
-            <NavLink to="/home" as={Link}>
-              <AiFillHome
-                style={{ marginBottom: "3px", marginRight: "3px" }}
-                className="navIcons"
-              />{" "}
-              <span className="navtext">Home</span>
-            </NavLink>
-          </Nav.Item>
-          <Nav.Item>
-            <NavLink>
-              <AiOutlineSearch
-                style={{ marginBottom: "3px", marginRight: "3px" }}
-                className="navIcons"
-              />{" "}
-              <span className="navtext">Search</span>
-            </NavLink>
-          </Nav.Item>
-          <Nav.Item>
-            <NavLink>
-              <FcLike
-                style={{ marginBottom: "2px", marginRight: "3px" }}
-                className="navIcons"
-              />{" "}
-              <span className="navtext">Likes</span>
-            </NavLink>
-          </Nav.Item>
-          <Nav.Item>
-            <NavLink onClick={() => setShowModal(true)}>
-              <BiMessageSquareAdd
-                style={{ marginBottom: "2px", marginRight: "3px" }}
-                className="navIcons"
-              />{" "}
-              <span className="navtext">Create Post</span>
-            </NavLink>
-          </Nav.Item>
-          <Nav.Item>
-          {Auth.loggedIn() ? (
-            <>
-            <NavLink as={Link} to='/profile'>
-              <CgProfile
-                style={{ marginBottom: "2px", marginRight: "3px" }}
-                className="navIcons"
-              />{" "}
-              <span className="navtext">Profile</span>
-            </NavLink>
-            </>
-          ) : (
-            <></>
-          )}
-          </Nav.Item>
-          <Nav.Item>
-            <NavLink as={Link} to="/" onClick={Auth.logout} className="logout">
-              <BiLogOut
-                style={{ marginBottom: "2px", marginRight: "3px" }}
-                className="navIconsL"
-              />{" "}
-              <span className="navtext">Logout</span>
-            </NavLink>
-          </Nav.Item>
-        </Nav>
+          <Nav className="smallScreen">
+            <p className="nav-logo">The Townies</p>
+            <img className="logoIcon" src={Logo} alt="logoIcon" />
+            <Nav.Item>
+              <NavLink to="/home" as={Link}>
+                <AiFillHome
+                  style={{ marginBottom: "3px", marginRight: "3px" }}
+                  className="navIcons"
+                />{" "}
+                <span className="navtext">Home</span>
+              </NavLink>
+            </Nav.Item>
+            <Nav.Item>
+              <NavLink>
+                <AiOutlineSearch
+                  style={{ marginBottom: "3px", marginRight: "3px" }}
+                  className="navIcons"
+                />{" "}
+                <span className="navtext">Search</span>
+              </NavLink>
+            </Nav.Item>
+            <Nav.Item>
+              <NavLink>
+                <FcLike
+                  style={{ marginBottom: "2px", marginRight: "3px" }}
+                  className="navIcons"
+                />{" "}
+                <span className="navtext">Likes</span>
+              </NavLink>
+            </Nav.Item>
+            <Nav.Item>
+              <NavLink onClick={() => setShowModal(true)}>
+                <BiMessageSquareAdd
+                  style={{ marginBottom: "2px", marginRight: "3px" }}
+                  className="navIcons"
+                />{" "}
+                <span className="navtext">Create Post</span>
+              </NavLink>
+            </Nav.Item>
+            <Nav.Item>
+              {Auth.loggedIn() ? (
+                <>
+                  <NavLink as={Link} to="/profile">
+                    <CgProfile
+                      style={{ marginBottom: "2px", marginRight: "3px" }}
+                      className="navIcons"
+                    />{" "}
+                    <span className="navtext">Profile</span>
+                  </NavLink>
+                </>
+              ) : (
+                <></>
+              )}
+            </Nav.Item>
+            <Nav.Item>
+              <NavLink
+                as={Link}
+                to="/"
+                onClick={Auth.logout}
+                className="logout"
+              >
+                <BiLogOut
+                  style={{ marginBottom: "2px", marginRight: "3px" }}
+                  className="navIconsL"
+                />{" "}
+                <span className="navtext">Logout</span>
+              </NavLink>
+            </Nav.Item>
+          </Nav>
         </div>
       </Navbar>
       <Modal

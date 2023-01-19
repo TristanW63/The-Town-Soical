@@ -4,37 +4,39 @@ import { useMutation } from "@apollo/client";
 import { ADD_LIKE } from "../utils/mutations";
 
 const Likes = ({ postId }) => {
-    const [ likeCount, setLikeCount] = useState('');
-    const [ addLike, { error }] = useMutation(ADD_LIKE);
+  const [likeCount, setLikeCount] = useState("");
+  const [addLike, { error }] = useMutation(ADD_LIKE);
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-        try {
-           const { data } = await addLike({
-                variables: {
-                    postId
-                },
-            });
+    try {
+      const { data } = await addLike({
+        variables: {
+          postId,
+        },
+      });
 
-            setLikeCount('')
-        } catch (err) {
-            console.error(err);
-        }
-    };
+      setLikeCount("");
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-    const handleChange = (event) => {
-        const { like } = event.target;
-        if (like) {
-            setLikeCount(like);
-        }
-    };
+  const handleChange = (event) => {
+    const { like } = event.target;
+    if (like) {
+      setLikeCount(like);
+    }
+  };
 
-    return (
-        <>
-        <button onSubmit={handleSubmit} onChange={handleChange} ><FcLike /></button>
-        </>
-    );
+  return (
+    <>
+      <button onSubmit={handleSubmit} onChange={handleChange}>
+        <FcLike />
+      </button>
+    </>
+  );
 };
 
 export default Likes;

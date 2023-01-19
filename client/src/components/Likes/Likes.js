@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
 const LikeList = ({ likes = [] }) => {
-  console.log(likes)
+  console.log(likes);
   return (
     <>
-    <p>Likes</p>
+      <p>Likes</p>
       <div className="flex-row my-4">
         {likes &&
           likes.map((like) => (

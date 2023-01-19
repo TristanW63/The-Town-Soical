@@ -4,25 +4,25 @@ import NavBar from "./../Navbar/Navbar";
 import { QUERY_ME, QUERY_USER } from "../../utils/queries";
 import Auth from "../../utils/auth";
 import { useQuery, useMutation } from "@apollo/client";
-import { Navigate, useParams } from 'react-router-dom';
+import { Navigate, useParams } from "react-router-dom";
 import PostsList from "../Posts/Posts";
 
 const Profile = () => {
-    const { username: userParam } = useParams();
+  const { username: userParam } = useParams();
 
-    const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-        variables: { username: userParam },
-      });
+  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+    variables: { username: userParam },
+  });
 
-      const user = data?.me || data?.user || {};
+  const user = data?.me || data?.user || {};
 
-    //   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    //     return <Navigate to="/profile" />;
-    //   }
+  //   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+  //     return <Navigate to="/profile" />;
+  //   }
 
-    console.log(user);
+  console.log(user);
 
-if (loading) {
+  if (loading) {
     return <h2>LOADING...</h2>;
   }
   if (!user?.username) {
@@ -37,8 +37,11 @@ if (loading) {
   return (
     <div className="Home">
       <NavBar />
-      <div style={{ marginLeft: "15%", padding: "20px"}} className="flex-row justify-center col-md-6">
-      {/* <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
+      <div
+        style={{ marginLeft: "15%", padding: "20px" }}
+        className="flex-row justify-center col-md-6"
+      >
+        {/* <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
           Viewing {userParam ? `${user.username}'s` : 'your'} profile.
         </h2> */}
         <div className="col-12 col-md-10 mb-5">
@@ -49,7 +52,6 @@ if (loading) {
             showUsername={false}
           />
         </div>
-
       </div>
     </div>
   );

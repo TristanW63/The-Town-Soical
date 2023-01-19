@@ -10,9 +10,9 @@ const app = express();
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers, 
+  resolvers,
   context: authMiddleware,
-  persistedQueries: false, 
+  persistedQueries: false,
 });
 
 app.use(express.urlencoded({ extended: true }));
@@ -20,7 +20,7 @@ app.use(express.json());
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
-};
+}
 
 const startApolloServer = async (typeDefs, resolvers) => {
   await server.start();
@@ -29,7 +29,9 @@ const startApolloServer = async (typeDefs, resolvers) => {
   db.once("open", () => {
     app.listen(PORT, () => {
       console.log(`Server now running on port ${PORT}!`);
-      console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`)
+      console.log(
+        `Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`
+      );
     });
   });
 };

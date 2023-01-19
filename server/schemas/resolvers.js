@@ -60,7 +60,7 @@ const resolvers = {
         postAuthor,
       })
         .then((post) => {
-          console.log(post)
+          console.log(post);
           return User.findOneAndUpdate(
             { _id: context.user._id },
             { $addToSet: { posts: post._id } },
@@ -96,9 +96,8 @@ const resolvers = {
         {
           $inc: { likeCount: 1 },
           $addToSet: {
-
-            likes: { liker: context.user.username }
-          }
+            likes: { liker: context.user.username },
+          },
         },
         {
           new: true,

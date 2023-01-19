@@ -16,12 +16,12 @@ const postSchema = new Schema({
   },
   likeCount: {
     type: Number,
-    default: 0
-},
+    default: 0,
+  },
   likes: [
     {
       liker: {
-        type: String
+        type: String,
       },
       createdAt: {
         type: Date,
@@ -60,5 +60,4 @@ const postSchema = new Schema({
 const Post = model("Post", postSchema);
 module.exports = Post;
 
-
- // required: true,
+// required: true,
