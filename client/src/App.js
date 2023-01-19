@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import Login from './components/Login/Reg/Login';
 import Home from './components/Home/Home';
+import Profile from "../src/components/Profile/Profile";
 import { Register } from './components/Login/Reg/Register';
 import { createHttpLink,
   ApolloClient,
@@ -43,6 +44,7 @@ function App() {
       <Route path='/' element={<Login />} />
       <Route path='/register' element={<Register />} />
       <Route path='/home' element={<Home />} />
+      <Route path='/profile' element={<Profile />} />
     </Routes>
    </Router>
     </ApolloProvider>

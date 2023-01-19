@@ -7,7 +7,7 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-    post: [Post]
+    posts: [Post]!
   }
   type Post {
     _id: ID
@@ -35,8 +35,8 @@ const typeDefs = gql`
   }
   type Query {
     users: [User]
-    user(username: String!): User
-    posts: [Post]
+    user(username: String!): [User]
+    posts(username: String): [Post]
     post(postId: ID!): Post
     me: User
   }

@@ -31,10 +31,18 @@ mutation addPost($postText: String!, $postAuthor: String!){
       postText
       _id
       createdAt
+      likeCount
     }
   }
 `;
 
+
+export const ADD_LIKE = gql`
+mutation addLike($postId: ID!) {
+  addLike(postId: $postId) {
+    likeCount
+  }
+}`
 export const ADD_COMMENT = gql`
 mutation addcomment($postId: ID!, $commentText: String!, $commentAuthor: String!){
     addComment(postId: $postId, commentText: $commentText, commentAuthor: $commentAuthor) {
