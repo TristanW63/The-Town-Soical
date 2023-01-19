@@ -11,6 +11,7 @@ const PostsList = ({
   title,
   showTitle = true,
   showUsername = true,
+  refetch
 }) => {
   if (!posts.length) {
     return <div className="Home">No Posts Yet</div>;
@@ -20,7 +21,6 @@ console.log(posts);
 
   return (
     <div  className="postCard">
-      {showTitle && <h3>{title}</h3>}
       {posts &&
         posts.map((post) => (
           <div key={post._id} className="card mb-4">
@@ -33,7 +33,7 @@ console.log(posts);
             <FcLike />
             <p className="postText">{post.postText}</p>
             <span> posted on {post.createdAt}</span>
-            <CommentForm/>
+            <CommentForm postId={post._id} refetch={refetch}/>
             <CommentList comments={post.comments}/>
             <LikeList likes={post.likes}/>
           </div>

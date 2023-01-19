@@ -18,13 +18,23 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_POSTS = gql`
-query getPosts {
+query posts{
   posts {
-    _id
     postText
     postAuthor
+    _id
     createdAt
-    likeCount
+    likes {
+      _id
+      liker
+      createdAt
+    }
+    comments {
+      commentAuthor
+      commentText
+      createdAt
+      _id
+    }
   }
 }
 `;
