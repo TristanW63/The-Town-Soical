@@ -76,7 +76,7 @@ function NavBar() {
           <p className="nav-logo">The Townies</p>
           <img className="logoIcon" src={Logo} alt="logoIcon"/>
           <Nav.Item>
-            <NavLink to="/home">
+            <NavLink to="/home" as={Link}>
               <AiFillHome
                 style={{ marginBottom: "3px", marginRight: "3px" }}
                 className="navIcons"
@@ -112,13 +112,19 @@ function NavBar() {
             </NavLink>
           </Nav.Item>
           <Nav.Item>
-            <NavLink>
+          {Auth.loggedIn() ? (
+            <>
+            <NavLink as={Link} to='/profile'>
               <CgProfile
                 style={{ marginBottom: "2px", marginRight: "3px" }}
                 className="navIcons"
               />{" "}
               <span className="navtext">Profile</span>
             </NavLink>
+            </>
+          ) : (
+            <></>
+          )}
           </Nav.Item>
           <Nav.Item>
             <NavLink as={Link} to="/" onClick={Auth.logout} className="logout">

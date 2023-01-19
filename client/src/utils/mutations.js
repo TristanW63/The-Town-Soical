@@ -31,6 +31,14 @@ mutation addPost($postText: String!, $postAuthor: String!){
       postText
       _id
       createdAt
+      likeCount
     }
   }
 `;
+
+export const ADD_LIKE = gql`
+mutation addLike($postId: ID!) {
+  addLike(postId: $postId) {
+    likeCount
+  }
+}`

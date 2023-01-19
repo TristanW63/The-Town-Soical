@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const QUERY_ME = gql`
-  query me {
+ query me {
     me {
       _id
       username
@@ -10,6 +10,7 @@ export const QUERY_ME = gql`
         _id
         postText
         postAuthor
+        likeCount
         createdAt
       }
     }
@@ -24,28 +25,24 @@ query getPosts {
     postAuthor
     createdAt
     likeCount
-    likes {
-      liker
-      createdAt
-    }
-    comments {
-      _id
-      commentText
-      commentAuthor
-      createdAt
-    }
   }
 }
 `;
+
+export const USER_POSTS = gql`
+query UserPosts($postAuthor: String!) {
+  userPosts(postAuthor: $postAuthor) {
+    postText
+    postAuthor
+    createdAt
+  }
+}`
 
 // export const QUERY_LIKES = gql`
 // query getLikes($postId: ID!) {
 //   likes(postId: $postId) {
 //     likes {
-//       _id
-//       liker
 //       likeCount
-//       createdAt
 //     }
 //   }
 // }`
@@ -60,11 +57,17 @@ export const QUERY_USERS = gql`
 `;
 
 export const QUERY_USER = gql`
-query($username: String!){
+query user($username: String!){
   user(username: $username) {
     _id
-    post {
+    username
+    email
+    posts {
+      _id
       postText
+      postAuthor
+      likeCount
+      createdAt
     }
   }
 }
