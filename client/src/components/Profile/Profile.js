@@ -6,7 +6,7 @@ import { useQuery } from "@apollo/client";
 import {  useParams } from "react-router-dom";
 import PostsList from "../Posts/Posts";
 
-const Profile = () => {
+const Profile = ( refetch ) => {
   const { username: userParam } = useParams();
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -40,6 +40,7 @@ const Profile = () => {
             title={`${user.username}'s thoughts...`}
             showTitle={false}
             showUsername={false}
+            refetch={refetch}
           />
         </div>
       </div>

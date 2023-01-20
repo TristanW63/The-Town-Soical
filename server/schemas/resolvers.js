@@ -12,7 +12,7 @@ const resolvers = {
     },
     posts: async (parents, { username }) => {
       const params = username ? { username } : {};
-      return Post.find(params).populate("").sort({ createdAt: -1 });
+      return Post.find(params).populate("posts").sort({ createdAt: -1 });
     },
     post: async (parent, { postId }) => {
       return Post.findOne({ _id: postId });

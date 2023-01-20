@@ -3,7 +3,7 @@ import { FcLike } from "react-icons/fc";
 import { useMutation } from "@apollo/client";
 import { ADD_LIKE } from "../../utils/mutations";
 
-const Likes = ({ postId }) => {
+const Likes = ({ postId, refetch }) => {
   const [likeCount, setLikeCount] = useState("");
   const [addLike, { error }] = useMutation(ADD_LIKE);
 
@@ -18,6 +18,7 @@ console.log(postId);
       });
 
       setLikeCount("");
+      refetch();
     } catch (err) {
       console.error(err);
     }
