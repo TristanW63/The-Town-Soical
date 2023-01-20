@@ -23,9 +23,9 @@ const PostsList = ({
           <div key={post._id} className="card mb-4">
             {post.postAuthor} <br />
             <p className="postText">{post.postText}</p>
-            <Likes postId={post._id}/>
+            <Likes postId={post._id} refetch={refetch}/>
             <p> Liked by {post.likeCount}</p>
-            {/* <LikeList likes={post.likes} /> */}
+            <LikeList likes={post.likes} />
             <CommentForm postId={post._id} refetch={refetch} />
             <CommentList comments={post.comments} />
             <span> posted on {post.createdAt}</span>
