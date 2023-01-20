@@ -136,7 +136,6 @@ function NavBar() {
               >
                 <BiLogOut
                   style={{ marginBottom: "2px", marginRight: "3px" }}
-                  className="navIconsL"
                 />{" "}
                 <span className="navtext">Logout</span>
               </NavLink>
