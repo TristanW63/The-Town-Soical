@@ -4,6 +4,7 @@ import { FcLike } from "react-icons/fc";
 import CommentList from "../Comment/Comment";
 import LikeList from "../Likes/Likes";
 import CommentForm from "../Comment/CommentForm";
+import Likes from "../Likes/LikeCounter";
 
 const PostsList = ({
   posts,
@@ -20,21 +21,17 @@ const PostsList = ({
 
   return (
     <div className="postCard">
-      {showTitle && <h3>{title}</h3>}
-
       {posts &&
         posts.map((post) => (
           <div key={post._id} className="card mb-4">
             {post.postAuthor} <br />
-            <div className="card-body bg-light p-2"></div>
-            {/* <Likes />  */}
-            <p> Liked by {post.likeCount}</p>
-            <FcLike />
             <p className="postText">{post.postText}</p>
-            <span> posted on {post.createdAt}</span>
+            <Likes />
+            <p> Liked by {post.likeCount}</p>
+            <LikeList likes={post.likes} />
             <CommentForm postId={post._id} refetch={refetch} />
             <CommentList comments={post.comments} />
-            <LikeList likes={post.likes} />
+            <span> posted on {post.createdAt}</span>
           </div>
         ))}
     </div>

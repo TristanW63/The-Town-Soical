@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FcLike } from "react-icons/fc";
 import { useMutation } from "@apollo/client";
-import { ADD_LIKE } from "../utils/mutations";
+import { ADD_LIKE } from "../../utils/mutations";
 
 const Likes = ({ postId }) => {
   const [likeCount, setLikeCount] = useState("");
@@ -31,11 +31,9 @@ const Likes = ({ postId }) => {
   };
 
   return (
-    <>
-      <button onSubmit={handleSubmit} onChange={handleChange}>
-        <FcLike />
-      </button>
-    </>
+      // <button style={{ width: "9%"}} onSubmit={handleSubmit} onChange={handleChange}>
+        <FcLike onSubmit={handleSubmit} onChange={handleChange}/>
+        // </button>
   );
 };
 
