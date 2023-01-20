@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { ADD_COMMENT } from "../../utils/mutations";
@@ -10,8 +10,8 @@ const CommentForm = ({ postId, refetch }) => {
 
   const [addcomment] = useMutation(ADD_COMMENT);
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
 
     console.log({
       postId,
@@ -44,15 +44,13 @@ const CommentForm = ({ postId, refetch }) => {
 
   return (
       <form onSubmit={handleFormSubmit}>
-          <textarea
+          <input
             placeholder="addComment"
             name="commentText"
             value={commentText}
             onChange={handleChange}
-          ></textarea>
-          <button className="btn btn-primary" type="submit">
-            Add Comment
-          </button>
+            type="text"
+          ></input>
       </form>
   );
 };

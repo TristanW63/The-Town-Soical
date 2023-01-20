@@ -35,6 +35,7 @@ export const QUERY_POSTS = gql`
       postAuthor
       _id
       createdAt
+      likeCount
       likes {
         _id
         liker
