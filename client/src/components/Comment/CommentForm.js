@@ -43,23 +43,17 @@ const CommentForm = ({ postId, refetch }) => {
   };
 
   return (
-    <div>
       <form onSubmit={handleFormSubmit}>
-        <div>
           <textarea
             placeholder="addComment"
             name="commentText"
             value={commentText}
             onChange={handleChange}
           ></textarea>
-        </div>
-        <div>
-          <button className="btn btn-primary btn-block" type="submit">
+          <button className="btn btn-primary" type="submit">
             Add Comment
           </button>
-        </div>
       </form>
-    </div>
   );
 };
 
