@@ -9,7 +9,7 @@ const Likes = ({ postId }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+console.log(postId);
     try {
       const { data } = await addLike({
         variables: {
@@ -25,15 +25,16 @@ const Likes = ({ postId }) => {
 
   const handleChange = (event) => {
     const { like } = event.target;
+    console.log(like);
     if (like) {
       setLikeCount(like);
     }
   };
 
   return (
-      // <button style={{ width: "9%"}} onSubmit={handleSubmit} onChange={handleChange}>
-        <FcLike onSubmit={handleSubmit} onChange={handleChange}/>
-        // </button>
+      <button style={{ width: "9%"}} onClick={handleSubmit} onChange={handleChange}>
+        <FcLike />
+      </button>
   );
 };
 
