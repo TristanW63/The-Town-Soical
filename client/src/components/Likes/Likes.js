@@ -1,7 +1,6 @@
 import React from "react";
 
 const LikeList = ({ likes = [] }) => {
-  console.log(likes);
   return (
     <>
         {likes &&

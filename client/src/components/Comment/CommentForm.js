@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 // import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
@@ -13,11 +14,6 @@ const CommentForm = ({ postId, refetch }) => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    console.log({
-      postId,
-      commentText,
-      commentAuthor: auth.getProfile().data.username,
-    });
     try {
       const { data } = await addcomment({
         variables: {

@@ -54,13 +54,11 @@ const resolvers = {
       return { token, user };
     },
     addPost: async (parent, { postText, postAuthor }, context) => {
-      console.log(context.user._id);
       Post.create({
         postText,
         postAuthor,
       })
         .then((post) => {
-          console.log(post);
           return User.findOneAndUpdate(
             { _id: context.user._id },
             { $addToSet: { posts: post._id } },
@@ -68,7 +66,6 @@ const resolvers = {
           );
         })
         .then((userPost) => {
-          console.log(userPost);
           return userPost;
         });
       // throw new AuthenticationError('You need to be logged in!');

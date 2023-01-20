@@ -1,6 +1,5 @@
 import React from "react";
 import "./Post.css";
-import { FcLike } from "react-icons/fc";
 import CommentList from "../Comment/Comment";
 import LikeList from "../Likes/Likes";
 import CommentForm from "../Comment/CommentForm";
@@ -16,8 +15,6 @@ const PostsList = ({
   if (!posts.length) {
     return <div className="Home">No Posts Yet</div>;
   }
-
-  console.log(posts);
 
   return (
     <div className="postCard">
