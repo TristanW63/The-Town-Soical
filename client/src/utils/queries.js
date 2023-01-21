@@ -28,6 +28,32 @@ export const QUERY_ME = gql`
   }
 `;
 
+export const QUERY_LIKED = gql `
+query {
+  me {
+    username
+  }
+  posts {
+    _id
+    postText
+    postAuthor
+    createdAt
+    likeCount
+    likes {
+      _id
+      liker
+      createdAt
+    }
+    comments {
+      _id
+      commentText
+      commentAuthor
+      createdAt
+    }
+  }
+}
+`
+
 export const QUERY_POSTS = gql`
   query posts {
     posts {

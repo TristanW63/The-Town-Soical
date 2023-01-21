@@ -6,10 +6,11 @@ import { ADD_LIKE } from "../../utils/mutations";
 const Likes = ({ postId, refetch }) => {
   const [likeCount, setLikeCount] = useState("");
   const [addLike, { error }] = useMutation(ADD_LIKE);
+  const [userLikedPost, setUserLikedPost] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-console.log(postId);
+ if(!userLikedPost) {
     try {
       const { data } = await addLike({
         variables: {
@@ -19,10 +20,12 @@ console.log(postId);
 
       setLikeCount("");
       refetch();
+      setUserLikedPost(true);
     } catch (err) {
       console.error(err);
     }
-  };
+  }
+};
 
   const handleChange = (event) => {
     const { like } = event.target;
@@ -31,9 +34,9 @@ console.log(postId);
       setLikeCount(like);
     }
   };
-
+  let color = userLikedPost ? 'red': 'black'
   return (
-      <button style={{ width: "9%"}} onClick={handleSubmit} onChange={handleChange}>
+      <button style={{ width: "9%" , color: color}} onClick={handleSubmit} onChange={handleChange}>
         <FcLike />
       </button>
   );

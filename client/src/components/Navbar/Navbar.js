@@ -95,13 +95,19 @@ function NavBar() {
               </NavLink>
             </Nav.Item>
             <Nav.Item>
-              <NavLink>
+            {Auth.loggedIn() ? (
+              <>
+              <NavLink as={Link} to='/likes'>
                 <FcLike
                   style={{ marginBottom: "2px", marginRight: "3px" }}
                   className="navIcons"
                 />{" "}
                 <span className="navtext">Likes</span>
               </NavLink>
+              </>
+            ) : (
+              <></>
+            )}
             </Nav.Item>
             <Nav.Item>
               <NavLink onClick={() => setShowModal(true)}>
