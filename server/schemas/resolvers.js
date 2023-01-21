@@ -17,11 +17,12 @@ const resolvers = {
     post: async (parent, { postId }) => {
       return Post.findOne({ _id: postId });
     },
-    likes: async (_, args) => {
-      const { liker } = args;
-      const posts = await Post.find({ "likes.liker": liker });
-      return posts;
-       },
+    // likes: async () => {
+    //   const posts = await Post.find({ username });
+    //   console.log(username);
+    //   return posts;
+    // },
+    
     //   comments: async () => {
     // return Post.find().populate('comments');
     //   },

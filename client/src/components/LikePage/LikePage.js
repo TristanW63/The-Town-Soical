@@ -8,19 +8,19 @@ import { QUERY_LIKED, QUERY_USER } from "../../utils/queries";
 
 
 const LikesPage = () => {
-    const { username: userParam } = useParams();
+    const { liker: userParam } = useParams();
 
-    const { loading, data } = useQuery(userParam ? QUERY_LIKED : QUERY_USER, {
-        variables: { username: userParam },
-      });
+    const { loading, data } = useQuery(QUERY_LIKED, {
+       variables: { liker: userParam },
       
-  
-    const user = data?.me || data?.user || {};
-  
+    });
+    // const user = data?.posts || {};
+    
+  console.log(data);
     if (loading) {
       return <h2>LOADING...</h2>;
     }
-    if (!user || !user?.username) {
+    if (!data || !data?.username) {
       return (
         <h4>
           You need to be logged in to see this. Use the navigation links above to
@@ -37,8 +37,8 @@ const LikesPage = () => {
         className="flex-row justify-center col-md-6"
       >
           <PostsList
-            posts={user.posts}
-            title={`${user.username}'s thoughts...`}
+            posts={data.posts}
+            title={`${data.username}'s thoughts...`}
             showTitle={false}
             showUsername={false}
             // refetch={refetch}
