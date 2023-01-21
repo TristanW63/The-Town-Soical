@@ -1,7 +1,7 @@
 import React from "react";
 import "../Home/Home.css";
 import NavBar from "./../Navbar/Navbar";
-import { QUERY_ME, QUERY_USER } from "../../utils/queries";
+import { QUERY_ME } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
 import {  useParams } from "react-router-dom";
 import PostsList from "../Posts/Posts";
@@ -9,11 +9,11 @@ import PostsList from "../Posts/Posts";
 const Profile = ( refetch ) => {
   const { username: userParam } = useParams();
 
-  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+  const { loading, data } = useQuery( QUERY_ME, {
     variables: { username: userParam },
   });
 
-  const user = data?.me || data?.user || {};
+  const user = data?.me || {};
 
   if (loading) {
     return <h2>LOADING...</h2>;
@@ -31,10 +31,8 @@ const Profile = ( refetch ) => {
     <div className="Home">
       <NavBar />
       <div
-        style={{ marginLeft: "15%", padding: "20px" }}
-        className="flex-row justify-center col-md-6"
+        className="postCard"
       >
-        <div className="col-12 col-md-10 mb-5">
           <PostsList
             posts={user.posts}
             title={`${user.username}'s thoughts...`}
@@ -42,7 +40,6 @@ const Profile = ( refetch ) => {
             showUsername={false}
             refetch={refetch}
           />
-        </div>
       </div>
     </div>
   );

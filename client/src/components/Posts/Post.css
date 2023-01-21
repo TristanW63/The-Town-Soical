@@ -15,11 +15,18 @@
   justify-content: center !important;
 }
 
+@media screen and (max-width: 1200px) {
+  .postCard {
+    margin-left: 8% !important;
+  width: 90% !important;
+  }
+}
+
 @media screen and (max-width: 772px) {
   .postCard {
-    margin-left: 5% !important;
-    margin-right: 5% !important;
-  width: 90% !important;
+    margin-left: 3% !important;
+    margin-right: 3% !important;
+  width: 95% !important;
   }
   .card {
     
