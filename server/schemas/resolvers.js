@@ -88,7 +88,7 @@ const resolvers = {
         }
       );
     },
-    addLike: async (parent, { postId }, context) => {
+    addLike: async (parent, { postId, likeId, liker }, context) => {
       return Post.findOneAndUpdate(
         { _id: postId },
         {
@@ -100,6 +100,17 @@ const resolvers = {
         {
           new: true,
           runValidators: true,
+        }).then((like) => {
+          return User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $addToSet: {
+              likes: { likeId, liker }
+            }},
+            { new: true }
+          )
+        })
+        .then((userLike) => {
+          return userLike;
         })
     },
   },

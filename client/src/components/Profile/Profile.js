@@ -14,7 +14,7 @@ const Profile = ( refetch ) => {
   });
 
   const user = data?.me || {};
-
+console.log(user);
   if (loading) {
     return <h2>LOADING...</h2>;
   }
