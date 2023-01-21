@@ -17,10 +17,11 @@ const resolvers = {
     post: async (parent, { postId }) => {
       return Post.findOne({ _id: postId });
     },
-
-    //     likes: async () => {
-    // return Post.find().populate('likes');
-    //     },
+    likes: async (_, args) => {
+      const { liker } = args;
+      const posts = await Post.find({ "likes.liker": liker });
+      return posts;
+       },
     //   comments: async () => {
     // return Post.find().populate('comments');
     //   },
@@ -99,8 +100,7 @@ const resolvers = {
         {
           new: true,
           runValidators: true,
-        }
-      );
+        })
     },
   },
 };
