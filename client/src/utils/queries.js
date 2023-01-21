@@ -80,8 +80,8 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_LIKED = gql `
-query getLiked($username: String!) {
-  likes(username: $username) {
+query likes {
+  me {
     _id
     username
     email
@@ -91,18 +91,12 @@ query getLiked($username: String!) {
       postAuthor
       likeCount
       createdAt
-      likes {
-        _id
-        liker
-        createdAt
-      }
-      comments {
-        commentAuthor
-        commentText
-        createdAt
-        _id
-      }
-    }
   }
+  likes {
+    _id
+    liker
+    createdAt
+  }
+}
 }
 `
