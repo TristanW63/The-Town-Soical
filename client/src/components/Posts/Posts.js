@@ -20,7 +20,7 @@ const PostsList = ({
     <div className="postCard">
       {posts &&
         posts.map((post) => (
-          <div key={post._id} className="card mb-4">
+          <div key={post._id} className="card">
             {post.postAuthor} <br />
             <p className="postText">{post.postText}</p>
             <Likes postId={post._id} refetch={refetch}/>

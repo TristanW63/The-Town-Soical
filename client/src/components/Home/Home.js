@@ -14,8 +14,7 @@ const Home = () => {
     <div className="Home">
       <NavBar />
       <div
-        style={{ marginLeft: "15%", padding: "20px" }}
-        className="flex-row justify-center col-md-6"
+        className="postCard"
       >
         <PostsList
           posts={posts}

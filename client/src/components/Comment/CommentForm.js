@@ -41,6 +41,7 @@ const CommentForm = ({ postId, refetch }) => {
   return (
       <form onSubmit={handleFormSubmit}>
           <input
+          className="smallComment"
             placeholder="addComment"
             name="commentText"
             value={commentText}
