@@ -70,7 +70,6 @@ const resolvers = {
         .then((userPost) => {
           return userPost;
         });
-      // throw new AuthenticationError('You need to be logged in!');
     },
     addComment: async (
       parent,

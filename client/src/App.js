@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import Login from "./components/Login/Reg/Login";
 import Home from "./components/Home/Home";
@@ -14,7 +14,6 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
   Routes,
 } from "react-router-dom";
@@ -39,11 +38,6 @@ const client = new ApolloClient({
 });
 
 function App() {
-  // const [currentForm, setCurrentForm] = useState( 'login');
-
-  // const toggleForm = (formName) => {
-  //   setCurrentForm(formName)
-  // }
   return (
     <ApolloProvider client={client}>
       <Router>
