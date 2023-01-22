@@ -3,7 +3,6 @@ import "./Post.css";
 import CommentList from "../Comment/Comment";
 import LikeList from "../Likes/Likes";
 import CommentForm from "../Comment/CommentForm";
-import Likes from "../Likes/LikeCounter";
 
 const PostsList = ({
   posts,
@@ -21,17 +20,15 @@ const PostsList = ({
       {posts &&
         posts.map((post) => (
           <div key={post._id} className="card">
-            {post.postAuthor} <br />
+            {post.postAuthor}<span className="date">{post.createdAt}</span> <br />
             <p className="postText">{post.postText}</p>
-            <Likes postId={post._id} refetch={refetch}/>
-            <p> Liked by {post.likeCount}</p>
-            <LikeList likes={post.likes} />
             <CommentForm postId={post._id} refetch={refetch} />
-            <CommentList comments={post.comments} />
-            <span> posted on {post.createdAt}</span>
+            <p><CommentList comments={post.comments} /> {post.commentCount} 
+           <span style={{ marginLeft: '3%'}}><LikeList postId={post._id} refetch={refetch}/> {post.likeCount}</span></p>
           </div>
         ))}
     </div>
   );
 };
 export default PostsList;
+// likes={post.likes}

@@ -11,6 +11,7 @@ export const QUERY_ME = gql`
         postText
         postAuthor
         likeCount
+        commentCount
         createdAt
         likes {
           _id
@@ -36,6 +37,7 @@ export const QUERY_POSTS = gql`
       _id
       createdAt
       likeCount
+      commentCount
       likes {
         _id
         liker
@@ -62,6 +64,7 @@ export const QUERY_USER = gql`
         postText
         postAuthor
         likeCount
+        commentCount
         createdAt
         likes {
           _id
@@ -90,6 +93,7 @@ query likes {
       postText
       postAuthor
       likeCount
+      commentCount
       createdAt
   }
   likes {
