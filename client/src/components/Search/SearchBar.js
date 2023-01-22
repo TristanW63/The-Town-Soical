@@ -19,8 +19,19 @@ const SearchPage = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-      console.log(data);
-      setUserSearch("");
+    console.log(data);
+    setUserSearch("");
+    console.log(userSearch, "hmmmmm");
+
+    const userArray = Object.values(users);
+
+    for (let i = 0; i < users.length; i++) {
+      if (userSearch === userArray[i].username) {
+        console.log("ladies and dudes we found " + userSearch);
+      }else{
+        console.log("no match my man")
+      }
+    }
   };
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -28,30 +39,23 @@ const SearchPage = () => {
     if (name === "UserSearch") {
       setUserSearch(value);
     }
-  console.log(userSearch, "hmmmmm");
-
-  for (let i = 0; i < users.length; i++) {
-    if (userSearch === users.username) {
-      console.log("ladies and dudes we found" + { userSearch });
-    }
-  }
-}
+  };
 
   return (
     <div className="Home">
-      <NavBar/>
-    <Form className="SearchBar" onSubmit={handleFormSubmit}>
-      <Form.Group>
-        <Form.Control
-          type="text"
-          name="UserSearch"
-          placeholder="Search..."
-          onChange={handleChange}
-          value={userSearch}
-        />
-      </Form.Group>
-      <Button type="submit">Search</Button>
-    </Form>
+      <NavBar />
+      <Form className="SearchBar" onSubmit={handleFormSubmit}>
+        <Form.Group>
+          <Form.Control
+            type="text"
+            name="UserSearch"
+            placeholder="Search..."
+            onChange={handleChange}
+            value={userSearch}
+          />
+        </Form.Group>
+        <Button type="submit">Search</Button>
+      </Form>
     </div>
   );
 };
