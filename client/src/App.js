@@ -4,6 +4,7 @@ import Login from "./components/Login/Reg/Login";
 import Home from "./components/Home/Home";
 import Profile from "../src/components/Profile/Profile";
 import LikesPage from "./components/LikePage/LikePage";
+import Search from "./components/Search/SearchBar"
 import { Register } from "./components/Login/Reg/Register";
 import {
   createHttpLink,
@@ -47,6 +48,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/likes" element={<LikesPage />} />
+          <Route path="/Search" element={<Search />} />
         </Routes>
       </Router>
     </ApolloProvider>

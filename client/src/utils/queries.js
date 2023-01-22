@@ -103,4 +103,28 @@ query likes {
   }
 }
 }
-`
+`;
+
+export const QUERY_USERS = gql`
+query{
+  users {
+    username
+    _id
+    email
+    posts {
+      _id
+      postText
+      postAuthor
+      likes {
+        _id
+        liker
+      }
+      comments {
+        _id
+        commentText
+        commentAuthor
+      }
+    }
+  }
+}
+`;

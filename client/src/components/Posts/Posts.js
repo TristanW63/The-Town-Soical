@@ -12,7 +12,7 @@ const PostsList = ({
   refetch,
 }) => {
   if (!posts.length) {
-    return <div class="parent">
+    return <div className="parent">
     <div style={{ fontSize: "6rem"}}> NO POSTS YET</div>
   </div>
   
