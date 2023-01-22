@@ -23,11 +23,13 @@ const resolvers = {
       const params = username ? { username } : {};
       return Post.find(params).populate("posts").sort({ createdAt: -1 });
     },
-    // likes: async () => {
-    //   const posts = await Post.find({ username });
-    //   console.log(username);
-    //   return posts;
-    // },
+    liked: async (parent, args , context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id }).populate({
+          path: "liked",
+        })
+      }
+    },
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate({
@@ -100,7 +102,7 @@ const resolvers = {
         {
           $inc: { likeCount: 1 },
           $addToSet: {
-            likes: { liker: context.user.username },
+            likes: { username: context.user.username },
           },
         },
         {
@@ -111,7 +113,7 @@ const resolvers = {
         .then((like) => {
           return User.findOneAndUpdate(
             { _id: context.user._id },
-            { $addToSet: { likes: like._id } },
+            { $addToSet: { liked: like._id } },
             { new: true }
           );
         })
