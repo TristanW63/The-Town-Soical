@@ -73,13 +73,14 @@ const resolvers = {
     },
     addComment: async (
       parent,
-      { postId, commentId, commentText, commentAuthor }
+      { postId, commentId, commentText, commentAuthor, createdAt }
     ) => {
       return Post.findOneAndUpdate(
         { _id: postId },
         {
+          $inc: { commentCount: 1 },
           $addToSet: {
-            comments: { commentId, commentText, commentAuthor },
+            comments: { commentId, commentText, commentAuthor, createdAt },
           },
         },
         {
@@ -88,7 +89,7 @@ const resolvers = {
         }
       );
     },
-    addLike: async (parent, { postId, likeId, liker }, context) => {
+    addLike: async (parent, { postId }, context) => {
       return Post.findOneAndUpdate(
         { _id: postId },
         {
@@ -103,9 +104,7 @@ const resolvers = {
         }).then((like) => {
           return User.findOneAndUpdate(
             { _id: context.user._id },
-            { $addToSet: {
-              likes: { likeId, liker }
-            }},
+            { $addToSet: { likes: like._id } },
             { new: true }
           )
         })

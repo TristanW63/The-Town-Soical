@@ -1,11 +1,15 @@
-
+import { useQuery } from "@apollo/client";
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_COMMENT } from "../../utils/mutations";
-
+import { QUERY_POSTS } from "../../utils/queries";
 import auth from "../../utils/auth";
 
-const CommentForm = ({ postId, refetch }) => {
+const CommentForm = ({ postId }) => {
+  const { data, loading, error, refetch } = useQuery(QUERY_POSTS, {
+    variables: { id: postId },
+  });
+
   const [commentText, setCommentText] = useState("");
 
   const [addcomment] = useMutation(ADD_COMMENT);
@@ -22,8 +26,8 @@ const CommentForm = ({ postId, refetch }) => {
         },
       });
       setCommentText("");
-      refetch();
       console.log(data);
+      refetch();
     } catch (err) {
       console.log(err);
     }
@@ -38,16 +42,16 @@ const CommentForm = ({ postId, refetch }) => {
   };
 
   return (
-      <form onSubmit={handleFormSubmit}>
-          <input
-          className="smallComment"
-            placeholder="addComment"
-            name="commentText"
-            value={commentText}
-            onChange={handleChange}
-            type="text"
-          ></input>
-      </form>
+    <form onSubmit={handleFormSubmit}>
+      <input
+        className="smallComment"
+        placeholder="addComment"
+        name="commentText"
+        value={commentText}
+        onChange={handleChange}
+        type="text"
+      ></input>
+    </form>
   );
 };
 

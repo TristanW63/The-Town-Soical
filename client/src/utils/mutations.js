@@ -32,6 +32,7 @@ export const ADD_POST = gql`
       _id
       createdAt
       likeCount
+      commentCount
     }
   }
 `;
@@ -54,6 +55,7 @@ export const ADD_COMMENT = gql`
       commentText: $commentText
       commentAuthor: $commentAuthor
     ) {
+      commentCount
       comments {
         commentText
         commentAuthor

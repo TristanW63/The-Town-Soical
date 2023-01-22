@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import {FaRegComment} from "react-icons/fa"
 
-const CommentList = ({ comments = [] }) => {
+const CommentList = ({ comments = [], refetch }) => {
+  const [commentsVisible, setCommentsVisible] = useState(false);
   return (
       <>
-        {comments &&
-          comments.map((comment) => (
-            <div key={comment._id} className="col-12 mb-3 pb-3">
-                <p className="card-body">{comment.commentText}</p>
-                <p className="card-body">{comment.commentAuthor}</p>
-            </div>
+            <>
+            <FaRegComment style={{ color: commentsVisible ? 'red' : 'black' }} 
+            onClick={() => setCommentsVisible(!commentsVisible)} refetch={refetch}/>
+      </>
+      {commentsVisible && (
+        <>
+          {comments.map((comment) => (
+            <section key={comment._id}><p className="card-body">{comment.commentAuthor}</p>
+                   <p className="card-body">{comment.commentText}</p>
+                   {comment.createdAt}</section>
           ))}
+        </>
+      )}
       </>
   );
 };
