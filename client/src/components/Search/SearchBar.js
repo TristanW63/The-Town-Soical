@@ -1,51 +1,59 @@
-import React, {useState} from 'react';
-import { QUERY_USERS } from '../../utils/queries';
+import React, { useState } from "react";
+import { QUERY_USERS } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
-
+import { Form, Button } from "react-bootstrap";
+import NavBar from "../Navbar/Navbar";
+import "./SearchBar.css";
 
 const SearchPage = () => {
-    const { username: userParam } = useParams();
-    const [userSearch, setUserSearch] = useState("");
-  
-    const { data } = useQuery(QUERY_USERS, {
-      variables: { username: userParam },
-    });
-  
-    const users = data?.users || {};
-  
-  console.log(users)
+  const { username: userParam } = useParams();
+  const [userSearch, setUserSearch] = useState("");
 
-  const handleFormSubmit = (event) => {
+  const { data } = useQuery(QUERY_USERS, {
+    variables: { username: userParam },
+  });
+
+  const users = data?.users || {};
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+      console.log(data);
+      setUserSearch("");
+  };
+  const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === "UserSearch" && value.length <= 280) {
+    if (name === "UserSearch") {
       setUserSearch(value);
     }
-  };
+  console.log(userSearch, "hmmmmm");
 
-  console.log(userSearch)
-
-  for(let i = 0; i < users.length; i++) {
-    if (users.username === userSearch) {
-        console.log("ladies and dudes we found" + {userSearch})
+  for (let i = 0; i < users.length; i++) {
+    if (userSearch === users.username) {
+      console.log("ladies and dudes we found" + { userSearch });
     }
   }
-
-  return (
-    <div>
-        <div>
-            <input type="text" 
-            name='UserSearch'
-            placeholder="Search..." 
-            onChange={handleFormSubmit}
-            value={userSearch}
-            />
-            <button type="submit">Search</button>
-        </div>
-    </div>
-  );
 }
 
-export default SearchPage;
+  return (
+    <div className="Home">
+      <NavBar/>
+    <Form className="SearchBar" onSubmit={handleFormSubmit}>
+      <Form.Group>
+        <Form.Control
+          type="text"
+          name="UserSearch"
+          placeholder="Search..."
+          onChange={handleChange}
+          value={userSearch}
+        />
+      </Form.Group>
+      <Button type="submit">Search</Button>
+    </Form>
+    </div>
+  );
+};
 
+export default SearchPage;
