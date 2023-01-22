@@ -12,7 +12,10 @@ const PostsList = ({
   refetch,
 }) => {
   if (!posts.length) {
-    return <div className="Home">No Posts Yet</div>;
+    return <div class="parent">
+    <div style={{ fontSize: "6rem"}}> NO POSTS YET</div>
+  </div>
+  
   }
 
   return (
@@ -20,11 +23,21 @@ const PostsList = ({
       {posts &&
         posts.map((post) => (
           <div key={post._id} className="card">
-            {post.postAuthor}<span className="date">{post.createdAt}</span> <br />
-            <p className="postText">{post.postText}</p>
-            <CommentForm postId={post._id} refetch={refetch} />
-            <p><CommentList comments={post.comments} /> {post.commentCount} 
-           <span style={{ marginLeft: '3%'}}><LikeList postId={post._id} refetch={refetch}/> {post.likeCount}</span></p>
+            <p className="author">{post.postAuthor}</p>
+            <span className="date">{post.createdAt}</span>
+            <p style={{ paddingLeft: "4%", paddingTop: "2%" }}>
+              {post.postText}
+            </p>
+            <div style={{ paddingLeft: "2%" }}>
+              <CommentForm postId={post._id} refetch={refetch} />
+            </div>
+            <p>
+              <span style={{ marginRight: "3%", paddingLeft: "3%" }}>
+                <LikeList postId={post._id} refetch={refetch} />{" "}
+                {post.likeCount}
+              </span>
+              <CommentList comments={post.comments} /> {post.commentCount}
+            </p>
           </div>
         ))}
     </div>

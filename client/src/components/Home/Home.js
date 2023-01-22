@@ -13,9 +13,7 @@ const Home = () => {
   return (
     <div className="Home">
       <NavBar />
-      <div
-        className="postCard"
-      >
+      <div className="postCard">
         <PostsList
           posts={posts}
           title="some feed for posts"
