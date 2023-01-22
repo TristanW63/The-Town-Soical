@@ -8,7 +8,9 @@ const resolvers = {
       return User.find().populate("posts").sort({ createdAt: -1 });
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate("posts").sort({ createdAt: -1 });
+      return User.findOne({ username })
+        .populate("posts")
+        .sort({ createdAt: -1 });
     },
     posts: async (parents, { username }) => {
       const params = username ? { username } : {};
@@ -17,18 +19,21 @@ const resolvers = {
     post: async (parent, { postId }) => {
       return Post.findOne({ _id: postId });
     },
+    comments: async (parents, { username }) => {
+      const params = username ? { username } : {};
+      return Post.find(params).populate("posts").sort({ createdAt: -1 });
+    },
     // likes: async () => {
     //   const posts = await Post.find({ username });
     //   console.log(username);
     //   return posts;
     // },
-    
-    //   comments: async () => {
-    // return Post.find().populate('comments');
-    //   },
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate("posts").sort({ createdAt: -1 });
+        return User.findOne({ _id: context.user._id }).populate({
+          path: "posts",
+          options: { sort: { createdAt: -1 } },
+        });
       }
       throw new AuthenticationError("You must be logged in!");
     },
@@ -101,16 +106,18 @@ const resolvers = {
         {
           new: true,
           runValidators: true,
-        }).then((like) => {
+        }
+      )
+        .then((like) => {
           return User.findOneAndUpdate(
             { _id: context.user._id },
             { $addToSet: { likes: like._id } },
             { new: true }
-          )
+          );
         })
         .then((userLike) => {
           return userLike;
-        })
+        });
     },
   },
 };
