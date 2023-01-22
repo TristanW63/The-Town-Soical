@@ -15,7 +15,7 @@ export const QUERY_ME = gql`
         createdAt
         likes {
           _id
-          liker
+          username
           createdAt
         }
         comments {
@@ -40,7 +40,7 @@ export const QUERY_POSTS = gql`
       commentCount
       likes {
         _id
-        liker
+        username
         createdAt
       }
       comments {
@@ -68,7 +68,7 @@ export const QUERY_USER = gql`
         createdAt
         likes {
           _id
-          liker
+          username
           createdAt
         }
         comments {
@@ -83,25 +83,15 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_LIKED = gql `
-query likes {
+query me {
   me {
     _id
     username
     email
-    posts {
+    liked {
       _id
-      postText
-      postAuthor
-      likeCount
-      commentCount
-      createdAt
+    }
   }
-  likes {
-    _id
-    liker
-    createdAt
-  }
-}
 }
 `;
 
@@ -117,7 +107,7 @@ query{
       postAuthor
       likes {
         _id
-        liker
+        username
       }
       comments {
         _id
