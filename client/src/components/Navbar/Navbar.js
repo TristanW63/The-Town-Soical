@@ -86,7 +86,7 @@ function NavBar() {
               </NavLink>
             </Nav.Item>
             <Nav.Item>
-              <NavLink>
+              <NavLink as={Link} to="/Search">  
                 <AiOutlineSearch
                   style={{ marginBottom: "3px", marginRight: "3px" }}
                   className="navIcons"
