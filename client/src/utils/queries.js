@@ -94,7 +94,7 @@ query{
     username
     _id
     email
-    posts {
+    posted {
       _id
       postText
       postAuthor

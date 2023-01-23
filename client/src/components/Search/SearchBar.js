@@ -61,7 +61,7 @@ const SearchPage = () => {
         </Form.Group>
         <Button type="submit">Search</Button>
       </Form>
-      { matchedUser && <PostList posts={matchedUser.posts} refetch={refetch} /> } 
+      { matchedUser && <PostList posts={matchedUser.posted} refetch={refetch} /> } 
       </div>
     </div>
   );
