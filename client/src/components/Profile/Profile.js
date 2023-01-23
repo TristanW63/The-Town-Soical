@@ -32,7 +32,7 @@ const Profile = (refetch) => {
       <NavBar />
       <div className="postCard">
         <PostsList
-          posts={user.posts}
+          posts={user.posted}
           title={`${user.username}'s thoughts...`}
           showTitle={false}
           showUsername={false}

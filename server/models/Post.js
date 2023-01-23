@@ -22,19 +22,6 @@ const postSchema = new Schema({
     type: Number,
     default: 0,
   },
-  likes: [
-    {
-      username: {
-        type: String,
-      },
-      createdAt: {
-        type: Date,
-        default: Date.now,
-        get: (timestamp) => dateFormat(timestamp),
-      },
-    },
-  ],
-
   createdAt: {
     type: Date,
     default: Date.now,
