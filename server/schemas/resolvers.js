@@ -5,11 +5,11 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate("posts").sort({ createdAt: -1 });
+      return User.find().populate("posted").sort({ createdAt: -1 });
     },
     user: async (parent, { username }) => {
       return User.findOne({ username })
-        .populate("posts")
+        .populate("posted")
         .sort({ createdAt: -1 });
     },
     posts: async (parents, { username }) => {
@@ -23,17 +23,17 @@ const resolvers = {
       const params = username ? { username } : {};
       return Post.find(params).populate("posts").sort({ createdAt: -1 });
     },
-    liked: async (parent, args , context) => {
+    liked: async (parents, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate({
-          path: "liked",
+          path: "liked"
         })
       }
     },
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate({
-          path: "posts",
+          path: "posted",
           options: { sort: { createdAt: -1 } },
         });
       }
@@ -63,20 +63,18 @@ const resolvers = {
       return { token, user };
     },
     addPost: async (parent, { postText, postAuthor }, context) => {
-      Post.create({
+      const post =  await Post.create({
         postText,
         postAuthor,
       })
         .then((post) => {
           return User.findOneAndUpdate(
             { _id: context.user._id },
-            { $addToSet: { posts: post._id } },
+            { $addToSet: { posted: post._id } },
             { new: true }
           );
         })
-        .then((userPost) => {
-          return userPost;
-        });
+        return { post }
     },
     addComment: async (
       parent,
@@ -101,19 +99,16 @@ const resolvers = {
         { _id: postId },
         {
           $inc: { likeCount: 1 },
-          $addToSet: {
-            likes: { username: context.user.username },
-          },
         },
         {
           new: true,
           runValidators: true,
         }
       )
-        .then((like) => {
+        .then((post) => {
           return User.findOneAndUpdate(
             { _id: context.user._id },
-            { $addToSet: { liked: like._id } },
+            { $addToSet: { liked: post._id } },
             { new: true }
           );
         })
@@ -121,7 +116,7 @@ const resolvers = {
           return userLike;
         });
     },
-  },
-};
+    },
+    };
 
 module.exports = resolvers;
