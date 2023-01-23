@@ -38,11 +38,14 @@ export const ADD_POST = gql`
 `;
 
 export const ADD_LIKE = gql`
-  mutation addLike($postId: ID!) {
-    addLike(postId: $postId) {
+mutation Mutation($postId: ID!) {
+  addLike(postId: $postId) {
+    username
+    liked {
       likeCount
     }
   }
+}
 `;
 export const ADD_COMMENT = gql`
   mutation addcomment(

@@ -16,11 +16,11 @@ const LikeList = ({ likes = [], postId }) => {
 
   const handleSubmit = async (event) => {
     // event.preventDefault();
- if(!userLikedPost) {
     try {
       const { data } = await addLike({
         variables: {
           postId,
+          likeCount
         },
       });
 
@@ -30,7 +30,6 @@ const LikeList = ({ likes = [], postId }) => {
     } catch (err) {
       console.error(err);
     }
-  }
 };
 
   const handleChange = (event) => {
@@ -43,13 +42,8 @@ const LikeList = ({ likes = [], postId }) => {
 
   return (
     <>
-    <FaHeart className="likeBtn" style={{ color: clicked ? 'red' : 'pink' }} onClick={() => {handleSubmit(); setClicked(!clicked)}} onChange={handleChange}/>
-        {likes &&
-          likes.map((like) => (
-            <div key={like._id} className="col-12 mb-3 pb-3">
-              <p>{like.username}</p>
-            </div>
-          ))}
+    <FaHeart className="likeBtn" style={{ color: clicked ? 'red' : 'pink' }} 
+    onClick={() => {handleSubmit(); setClicked(!clicked)}} onChange={handleChange}/>
     </>
   );
 };
