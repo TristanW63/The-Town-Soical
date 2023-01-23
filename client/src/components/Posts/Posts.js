@@ -6,17 +6,15 @@ import CommentForm from "../Comment/CommentForm";
 
 const PostsList = ({
   posts,
-  title,
-  showTitle = true,
-  showUsername = true,
   refetch,
 }) => {
+
   if (!posts.length) {
     return <div className="parent">
     <div style={{ fontSize: "6rem"}}> NO POSTS YET</div>
   </div>
-  
   }
+
 
   return (
     <div className="postCard">
