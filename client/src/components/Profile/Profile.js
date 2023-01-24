@@ -6,8 +6,8 @@ import { useQuery } from "@apollo/client";
 import PostsList from "../Posts/Posts";
 
 const Profile = (refetch) => {
-
   const { loading, data } = useQuery(QUERY_ME)
+  const currentUsername = data?.me?.username;
 
   const user = data?.me || {};
   console.log(user);
@@ -29,7 +29,7 @@ const Profile = (refetch) => {
       <div className="postCard">
         <PostsList
           posts={user.posted}
-          title={`${user.username}'s thoughts...`}
+          currentUsername={currentUsername}
           showTitle={false}
           showUsername={false}
           refetch={refetch}

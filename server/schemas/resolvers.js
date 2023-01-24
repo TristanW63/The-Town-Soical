@@ -26,7 +26,8 @@ const resolvers = {
     liked: async (parents, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate({
-          path: "liked"
+          path: "liked",
+          options: { sort: { createdAt: -1 } },
         })
       }
     },
@@ -76,6 +77,20 @@ const resolvers = {
         })
         return { post }
     },
+    updatePost: async (parent, { postId, postText }, context) => {
+      const currentUser = await User.findOne({ _id: context.user._id });
+      const post = await Post.findOne({ _id: postId });
+      if (post.postAuthor !== currentUser.username) {
+        throw new AuthenticationError("You are not the author of this post and cannot update it.");
+      }
+      return Post.findOneAndUpdate(
+        { _id: postId },
+        { postText },
+        { new: true }
+      )
+    },
+    
+    
     addComment: async (
       parent,
       { postId, commentId, commentText, commentAuthor, createdAt }

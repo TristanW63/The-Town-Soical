@@ -6,6 +6,7 @@ import { Form, Button } from "react-bootstrap";
 import NavBar from "../Navbar/Navbar";
 import PostList from "../Posts/Posts"
 import "./SearchBar.css";
+import "../Posts/Post.css";
 
 const SearchPage = () => {
   const { username: userParam } = useParams();
