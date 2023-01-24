@@ -50,7 +50,7 @@ export const Login = (props) => {
         <h2 className="logintext">Login</h2>
         <form
           noValidate
-          validated={validated}
+          validated={validated ? "true" : "false"}
           className="login-form"
           onSubmit={handleSubmit}
         >
