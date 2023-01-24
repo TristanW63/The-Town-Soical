@@ -24,6 +24,25 @@ export const QUERY_ME = gql`
   }
 `;
 
+export const QUERY_POST = gql`
+query Query($postId: ID!) {
+  post(postId: $postId) {
+    _id
+    postText
+    postAuthor
+    createdAt
+    likeCount
+    commentCount
+    comments {
+      _id
+      commentText
+      commentAuthor
+      createdAt
+    }
+  }
+}
+`
+
 export const QUERY_POSTS = gql`
   query posts {
     posts {

@@ -154,7 +154,6 @@ function NavBar() {
         onHide={() => setShowModal(false)}
         aria-labelledby="signup-modal"
       >
-        {/* tab container to do either signup or login component */}
         <Modal.Header closeButton>
           <Modal.Title style={{ marginLeft: "35%", fontWeight: "600" }}>
             Create Post
