@@ -25,6 +25,7 @@
   bottom: 0;
   right: 0;
   margin-right: 2%;
+  margin-left: 2%;
   margin-bottom: 2%;
 }
 .edit {
@@ -32,6 +33,7 @@
   bottom: 0;
   right: 0;
   margin-right: 6%;
+  margin-left: 6%;
   margin-bottom: 2%;
 }
 
@@ -80,6 +82,9 @@
     width: 95% !important;
     margin-bottom: 13% !important;
   }
+  .edit {
+    margin-right: 8% !important;
+  }
 }
 .smallComment {
   width: 50%;
@@ -91,5 +96,12 @@
   }
   .postCard {
     margin-bottom: 15% !important;
+  }
+  .edit {
+    margin-right: 10% !important;
+    margin-bottom: 5% !important;
+  }
+  .delete {
+    margin-bottom: 5% !important;
   }
 }

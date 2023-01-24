@@ -8,14 +8,14 @@ import { useQuery } from "@apollo/client";
 const LikeList = ({ likes = [], postId }) => {
   const [likeCount, setLikeCount] = useState("");
   const [addLike] = useMutation(ADD_LIKE);
-  // const [userLikedPost, setUserLikedPost] = useState(false);
+  const [userLikedPost, setUserLikedPost] = useState(false);
   const [clicked, setClicked] = useState(false);
   const { data, loading, error, refetch } = useQuery(QUERY_POSTS, {
     variables: { id: postId },
   });
 
   const handleSubmit = async (event) => {
-    // event.preventDefault();
+    if(!userLikedPost) {
     try {
       const { data } = await addLike({
         variables: {
@@ -25,11 +25,12 @@ const LikeList = ({ likes = [], postId }) => {
       });
 
       setLikeCount("");
+      setUserLikedPost(true);
       refetch();
-      // setUserLikedPost(true);
     } catch (err) {
       console.error(err);
     }
+  }
 };
 
   const handleChange = (event) => {
