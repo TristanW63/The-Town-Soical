@@ -38,17 +38,13 @@ export const ADD_POST = gql`
 `;
 
 export const UPDATE_POST = gql`
-mutation Mutation($postText: String!, $postId: ID) {
-  updatePost(postText: $postText, postId: $postId) {
-    postText
+mutation Mutation($postId: ID!, $postText: String!) {
+  updatePost(postId: $postId, postText: $postText) {
     _id
-    postAuthor
-    createdAt
-    likeCount
-    commentCount
+    postText
   }
 }
-`
+`;
 
 export const ADD_LIKE = gql`
 mutation Mutation($postId: ID!) {
