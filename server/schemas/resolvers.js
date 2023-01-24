@@ -94,7 +94,16 @@ const resolvers = {
       }
       )
     },
-    
+    deletePost: async (parent, { postId }, context) => {
+      const currentUser = await User.findOne({ _id: context.user._id });
+      const post = await Post.findOne({ _id: postId });
+      if (post.postAuthor !== currentUser.username) {
+        throw new AuthenticationError("You are not the author of this post and cannot update it.");
+      }
+      return Post.findOneAndDelete(
+        { _id: postId }
+      )
+    },
     
     addComment: async (
       parent,

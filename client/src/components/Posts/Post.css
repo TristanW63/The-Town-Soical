@@ -20,6 +20,21 @@
   height: 100vh; /* make parent element take full height of viewport */
 }
 
+.delete {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 2%;
+  margin-bottom: 2%;
+}
+.edit {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 6%;
+  margin-bottom: 2%;
+}
+
 
 .commentDate {
   float: right;
