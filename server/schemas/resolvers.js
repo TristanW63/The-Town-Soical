@@ -17,7 +17,7 @@ const resolvers = {
       return Post.find(params).populate("posts").sort({ createdAt: -1 });
     },
     post: async (parent, { postId }) => {
-      return Post.findOne({ _id: postId });
+      return Post.findOne({ _id: postId }).populate();
     },
     comments: async (parents, { username }) => {
       const params = username ? { username } : {};
@@ -80,13 +80,18 @@ const resolvers = {
     updatePost: async (parent, { postId, postText }, context) => {
       const currentUser = await User.findOne({ _id: context.user._id });
       const post = await Post.findOne({ _id: postId });
+      // console.log(postId);
       if (post.postAuthor !== currentUser.username) {
         throw new AuthenticationError("You are not the author of this post and cannot update it.");
       }
+      console.log(postId);
       return Post.findOneAndUpdate(
         { _id: postId },
-        { postText },
-        { new: true }
+        { $set: { postText: postText } },
+        { 
+          new: true,
+          runValidators: true
+      }
       )
     },
     
