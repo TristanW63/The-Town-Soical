@@ -37,6 +37,19 @@ export const ADD_POST = gql`
   }
 `;
 
+export const UPDATE_POST = gql`
+mutation Mutation($postText: String!, $postId: ID) {
+  updatePost(postText: $postText, postId: $postId) {
+    postText
+    _id
+    postAuthor
+    createdAt
+    likeCount
+    commentCount
+  }
+}
+`
+
 export const ADD_LIKE = gql`
 mutation Mutation($postId: ID!) {
   addLike(postId: $postId) {
