@@ -12,29 +12,25 @@ const PostsList = ({
   posts,
   refetch,
   currentUsername,
-  postId
 }) => {
   const [showModal, setShowModal] = useState(false);
   const [postText, setPostText] = useState("");
-  const [post_Id, setPostId] = useState("");
+  const [postId, setPostId] = useState("");
   const[updatePost] = useMutation(UPDATE_POST);
-  const { data, loading, error } = useQuery(QUERY_POST, {
-    variables: { id: postId },
-  });
 
+  console.log(postId + postText);
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const postId = post_Id;
     console.log(postId + postText);
     try {
       const { data, error } = await updatePost({
         variables: {
-          postId,
-          postText,
+          postId: postId,
+          postText: postText,
         },
       });
       
-      console.log(data);
+      console.log(error);
 
       setPostText("");
     } catch (err) {
@@ -43,9 +39,9 @@ const PostsList = ({
   };
 
   const handleChange = (event) => {
-    const { value } = event.target;
+    const { name, value } = event.target;
 
-    if (value.length <= 280) {
+    if (name === "postText") {
       setPostText(value);
     }
   };
@@ -91,7 +87,7 @@ const PostsList = ({
       >
         <Modal.Header closeButton>
           <Modal.Title style={{ marginLeft: "35%", fontWeight: "600" }}>
-            Create Post
+            Update Post
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
