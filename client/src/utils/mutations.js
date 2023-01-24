@@ -46,6 +46,14 @@ mutation Mutation($postId: ID!, $postText: String!) {
 }
 `;
 
+export const DELETE_POST = gql`
+mutation DeletePost($postId: ID!) {
+  deletePost(postId: $postId) {
+    _id
+  }
+}
+`;
+
 export const ADD_LIKE = gql`
 mutation Mutation($postId: ID!) {
   addLike(postId: $postId) {
