@@ -47,24 +47,23 @@ const SearchPage = () => {
   };
   
   return (
-    <div className="searchPage">
+    <div className="Home">
       <NavBar />
-      <div className="searchSide">
-      <Form className="SearchBar" onSubmit={handleFormSubmit}>
-        <Form.Group>
+      <div className="searchCard">
+      <Form className="SearchBarPosition" onSubmit={handleFormSubmit}>
           <Form.Control
+          className="Search"
             type="text"
             name="UserSearch"
             placeholder="Search..."
             onChange={handleChange}
             value={userSearch}
           />
-        </Form.Group>
-        <Button type="submit">Search</Button>
       </Form>
       { matchedUser && <PostList posts={matchedUser.posted} refetch={refetch} /> } 
+
       </div>
-    </div>
+      </div>
   );
 };
 
