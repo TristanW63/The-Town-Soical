@@ -20,7 +20,7 @@ HTML, CSS, Javascript, Bootstrap, AOS, Express, Node.js, MySQL, Sequelize, Handl
 
 
 ### Github Repo 
-https://github.com/KarenAdkins84/TheShophttps://github.com/BryceBann/The-Town-Soical
+https://github.com/BryceBann/The-Town-Soical
 
 ###Contributors
 BryceBann
